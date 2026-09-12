@@ -1,0 +1,27 @@
+version: 1
+architecture: feature_first
+naming: lemsa
+backend: mock
+auth: mock
+state: riverpod3
+forms: page_kit
+nav: auto_route
+i18n: slang
+style: design_system
+local:
+  kv: shared_preferences
+  secure: none
+  db: drift
+logging:
+  redact: true
+ui:
+  loading: loading_indicator
+  loading_type: lineScale
+codegen:
+  runner: build_runner
+  gen_cli: true
+  http: retrofit
+  models: copy_with_extension
+list_updates: callback
+action_slot: auto
+flavors: []

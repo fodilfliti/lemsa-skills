@@ -1,0 +1,16 @@
+name: lab_cli
+description: Scaffold commands for lemsa_lab sandbox.
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  path: ^1.9.1
+
+dev_dependencies:
+  test: ^1.25.15
+
+executables:
+  lab: lab

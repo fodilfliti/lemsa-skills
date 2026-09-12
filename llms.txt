@@ -1,0 +1,24 @@
+# lemsa skills
+
+Repo: https://github.com/fodilfliti/skills
+
+Agent Skills and design specs for the lemsa_packages Flutter family (flutter_scale_kit, flutter_scale_theme_kit, lemsa_core_kit, flutter_page_kit, flutter_input_kit, flutter_data_kit, flutter_nav_kit, flutter_app_kit). Documentation only, no Dart code.
+
+## Agent skills (install in the consumer app)
+
+npx skills add fodilfliti/skills
+
+Then: "Set up this project the Lemsa way."
+
+If lemsa.yaml is missing, the agent asks once for backend / storage / i18n and writes the file. Every other skill reads it first.
+
+## Core rules
+
+Page logic lives in `mixin XData<T extends StatefulWidget> on State<T>, PageData<T>` and must never import Riverpod. The page (a ConsumerState) is the only bridge.
+State that would not survive a page pop never goes in a provider.
+Adapters convert vendor exceptions into sealed AppFailure and throw it. try/catch is kept; empty catch is banned.
+Actions are data (PageAction); the shell decides placement.
+
+Skill files: skills/lemsa-flutter/SKILL.md
+Design brain: spec/
+Phase prompts: prompts/

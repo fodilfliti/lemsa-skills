@@ -1,0 +1,27 @@
+---
+description: How agents load Lemsa Skills context and where truth lives
+alwaysApply: true
+---
+
+# Lemsa Skills — session memory
+
+This repo is **documentation and Agent Skills** for the `lemsa_packages` Flutter family. No root `pubspec.yaml`. **`lab/`** is the only Flutter app (internal sandbox).
+
+## Where to look (in order)
+
+1. `spec/` — cross-kit design, invariants, decisions. Start at `spec/README.md`.
+2. `spec/kits/<kit>.md` — the design of one package.
+3. `spec/tasks/` — the build order. Pick **one** `Txx-*.md`.
+4. `lab/` — runnable architecture proof. Start at `spec/lab.md`.
+5. `skills/` — the rules an agent follows inside a consumer app.
+6. `README.md` — human front page. Do not load it as session memory.
+
+## Hard rules
+
+- Rationale lives in `spec/`; instructions live in `skills/`. Never duplicate rationale into a skill.
+- Skills are **self-contained**: `npx skills add` copies one directory, so a skill may not link to `spec/` or to another skill's files.
+- `SKILL.md` frontmatter needs `name` (lowercase, hyphens, matches the directory) and `description` written as an activation trigger. Body under ~500 lines; push detail to sibling files.
+- The form layer never imports Riverpod. State that would not survive a page pop never goes in a provider. These two rules constrain every kit design in `spec/kits/`.
+- Adding or renaming a kit means updating the family map in `spec/package.md`, the dependency rules, and `spec/tasks/README.md` in the same change.
+- Kit repos pin Flutter 3.35.7 via FVM and use `fvm flutter` / `fvm dart`. Never run `flutter upgrade` on the shared SDK.
+- Lab work uses `bd` for task state and `lemsa-lab` skill rules. See `spec/lab.md`.

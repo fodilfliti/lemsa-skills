@@ -1,0 +1,47 @@
+---
+description: Rules for writing or editing SKILL.md files and their reference siblings
+globs: skills/**/*.md
+alwaysApply: false
+---
+
+# Authoring a skill
+
+Follow the Agent Skills spec (https://agentskills.io/specification).
+
+## Frontmatter
+
+```yaml
+---
+name: kebab-case-matching-the-directory   # required, max 64 chars, a-z 0-9 and hyphens
+description: >                             # required, max 1024 chars
+  What it does, then when to apply it. Name the concrete triggers: the packages
+  involved, the file names, and the phrases a user actually types.
+license: MIT
+metadata:
+  author: fodilfliti
+  version: "0.1.0"
+  repo: https://github.com/fodilfliti/skills
+---
+```
+
+`description` is loaded at startup for every installed skill, so it is an activation trigger, not a summary. Write "Apply when the user says X / when file Y exists / when package Z is in pubspec", not "This skill covers X".
+
+## Body
+
+- Under ~500 lines. If it grows past that, move detail into a sibling file and link it from a short "read only when needed" list at the top.
+- Progressive disclosure: name and description at startup, body on activation, sibling files on demand.
+- Lead with the check that gates everything else — for this family that is "read `lemsa.yaml` first".
+- Prefer a table of rules and short code snippets over prose.
+- End with a `## Do / don't` section. Concrete, not aspirational.
+
+## Self-containment
+
+`npx skills add` copies a single skill directory. So:
+
+- No links to `spec/`, to the repo root, or to another skill's files.
+- Cross-skill dependencies are prose: "if `pubspec.yaml` lists `supabase_flutter`, also load the `flutter-supabase` skill".
+- Repeating a rule across two skills is acceptable when both need it standalone. Repeating rationale is not — rationale belongs in `spec/`.
+
+## When a public API changes
+
+Update the skill that teaches it in the same change. A skill that documents an API that no longer exists is worse than no skill.

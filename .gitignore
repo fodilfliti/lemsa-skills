@@ -1,0 +1,25 @@
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+
+# Agent skill installers
+.agents/
+.claude/
+.codex/
+node_modules/
+.skills.json
+skills-lock.json
+
+# Codebase memory
+.codebase-memory/
+
+# Lab build artifacts / local Flutter SDK
+lab/build/
+lab/.dart_tool/
+lab/.fvm/
+lab/.flutter-plugins
+lab/.flutter-plugins-dependencies

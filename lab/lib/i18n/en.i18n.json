@@ -1,0 +1,64 @@
+{
+  "app": {
+    "title": "Lemsa Lab"
+  },
+  "auth": {
+    "title": "Welcome",
+    "emailLabel": "Email",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "emailRequired": "Enter your email",
+    "signedInAs": "Signed in as $email"
+  },
+  "tabs": {
+    "tasks": "Tasks",
+    "calendar": "Calendar",
+    "stats": "Stats",
+    "profile": "Profile"
+  },
+  "home": {
+    "calendarPlaceholder": "Calendar — coming soon",
+    "statsPlaceholder": "Stats — coming soon"
+  },
+  "cache": {
+    "simulateOffline": "Simulate offline remote",
+    "simulateOfflineHint": "Creates stay local with pending sync badge",
+    "flakyApi": "Flaky remote API (~40% fail)",
+    "flakyApiHint": "Random network errors while online — test error snackbars",
+    "failNext": "Fail next API call",
+    "failNextHint": "Next create/update/sync hits NetworkFailure once",
+    "syncNow": "Sync cache now",
+    "syncing": "Syncing…",
+    "syncOk": "Sync done — pulled $pulled, flushed $flushed, pending $pending",
+    "syncOffline": "Offline — showing cache only",
+    "syncStatus": "$pending pending · pulled $pulled · flushed $flushed"
+  },
+  "tasks": {
+    "title": "Tasks",
+    "addTitle": "Add task",
+    "titleLabel": "Title",
+    "titleConfirmLabel": "Confirm title",
+    "save": "Save",
+    "saving": "Saving…",
+    "saved": "Task saved",
+    "updated": "Task updated",
+    "markDone": "Marked done",
+    "markPending": "Marked pending",
+    "emptyCache": "No cached tasks — pull to sync from remote",
+    "pendingSync": "Pending sync",
+    "syncFailed": "Sync failed"
+  },
+  "validation": {
+    "required": "Required",
+    "email": "Invalid email",
+    "minLength": "At least $n characters",
+    "passwordMismatch": "Passwords do not match",
+    "form": "Check the form"
+  },
+  "errors": {
+    "network": "Network error — try again",
+    "validation": "Invalid $field",
+    "notFound": "Not found",
+    "unknown": "Something went wrong"
+  }
+}

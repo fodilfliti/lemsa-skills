@@ -1,0 +1,28 @@
+---
+description: Beads (bd) task tracking for lab scenarios
+alwaysApply: true
+---
+
+# Beads — lab task graph
+
+Use **`bd`** for lab execution state — not markdown TODO lists.
+
+## Workflow
+
+```bash
+bd ready --json
+bd list --json
+bd update <id> --claim
+bd close <id> --reason "analyze+test green"
+```
+
+When the user says **"test scenario S0X"**, find issue titled `Lab S0X: …`, claim it, implement in `lab/` per `lab/spec/scenarios.md`, run `fvm flutter analyze` and `fvm flutter test`, then close.
+
+Discovery: `bd create "…" --deps discovered-from:<parent-id> -p 2 --json`
+
+## Policy
+
+- Conservative git: do **not** commit, push, or `bd dolt push` unless the user asks.
+- Run `bd prime` at lab session start for workflow context.
+
+Seed issues once: `scripts/seed-lab-bd.sh` (requires `bd init --quiet` at repo root).
