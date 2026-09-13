@@ -43,7 +43,7 @@ dependencies:
   flutter_data_kit_firebase:
     path: ../../flutter_data_kit/packages/flutter_data_kit_firebase
   lemsa_nav_kit:
-    path: ../../lemsa_nav_kit
+    path: ../../flutter_nav_kit
   flutter_app_kit:
     path: ../../flutter_app_kit
   flutter_scale_kit:
@@ -75,7 +75,7 @@ dependency_overrides:
   flutter_input_kit:
     path: ../../flutter_input_kit
   lemsa_nav_kit:
-    path: ../../lemsa_nav_kit
+    path: ../../flutter_nav_kit
   flutter_app_kit:
     path: ../../flutter_app_kit
   platform: ^3.1.6
