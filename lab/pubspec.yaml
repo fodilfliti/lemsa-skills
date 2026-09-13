@@ -60,8 +60,7 @@ dev_dependencies:
   build_runner: ^2.16.0
   drift_dev: ^2.34.3
 
-# Path pins for unpublished kits. platform ^3.1+ for Dart 3.13 (no packageRoot).
-# drift_flutter 0.3 wants sqlite3 ^3 / sqlite3_flutter_libs ^0.6; drift adapter lags.
+# Path pins so path-deps of kits that declare hosted scale/theme still resolve locally.
 dependency_overrides:
   flutter_data_kit:
     path: ../../flutter_data_kit
@@ -69,6 +68,16 @@ dependency_overrides:
     path: ../../lemsa_core_kit
   flutter_page_kit:
     path: ../../flutter_page_kit
+  flutter_scale_kit:
+    path: ../../flutter_scale_kit
+  flutter_scale_theme_kit:
+    path: ../../flutter_scale_theme_kit
+  flutter_input_kit:
+    path: ../../flutter_input_kit
+  lemsa_nav_kit:
+    path: ../../flutter_nav_kit
+  flutter_app_kit:
+    path: ../../flutter_app_kit
   platform: ^3.1.6
   sqlite3: ^3.0.0
   sqlite3_flutter_libs: ^0.6.0

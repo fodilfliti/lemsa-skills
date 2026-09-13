@@ -526,7 +526,7 @@ packages:
       path: "../../flutter_input_kit"
       relative: true
     source: path
-    version: "1.0.0"
+    version: "1.0.1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -540,13 +540,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_nav_kit:
-    dependency: "direct main"
-    description:
-      path: "../../flutter_nav_kit"
-      relative: true
-    source: path
-    version: "1.0.0"
   flutter_page_kit:
     dependency: "direct main"
     description:
@@ -575,7 +568,7 @@ packages:
       path: "../../flutter_scale_theme_kit"
       relative: true
     source: path
-    version: "1.0.2"
+    version: "1.0.3"
   flutter_secure_storage:
     dependency: transitive
     description:
@@ -785,6 +778,13 @@ packages:
       relative: true
     source: path
     version: "1.0.0"
+  lemsa_nav_kit:
+    dependency: "direct main"
+    description:
+      path: "../../flutter_nav_kit"
+      relative: true
+    source: path
+    version: "1.0.1"
   lints:
     dependency: transitive
     description:
