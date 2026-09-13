@@ -1,10 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lemsa_core_kit/lemsa_core_kit.dart';
 
 import '../../../core/app_providers.dart';
+import '../../../core/backend/lab_backend.dart';
 import '../../../i18n/strings.g.dart';
-import '../../../stubs/failures.dart';
 import '../../auth/state/session_provider.dart';
 import '../../tasks/state/task_providers.dart';
 
@@ -47,6 +48,7 @@ class ProfilePage extends ConsumerWidget {
         padding: const EdgeInsets.all(24),
         children: [
           if (session != null) Text(t.auth.signedInAs(email: session.email)),
+          Text(t.auth.backendLabel(backend: LabBackend.current.name)),
           const SizedBox(height: 16),
           SwitchListTile(
             title: Text(t.cache.simulateOffline),

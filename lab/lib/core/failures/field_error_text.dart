@@ -10,6 +10,7 @@ String? fieldErrorText(String? code, {int? n}) => switch (code) {
       'email' => t.validation.email,
       'minLength' => t.validation.minLength(n: n ?? 0),
       'passwordMismatch' => t.validation.passwordMismatch,
+      'money' => t.validation.money,
       'form' => t.validation.form,
       _ => t.validation.form,
     };

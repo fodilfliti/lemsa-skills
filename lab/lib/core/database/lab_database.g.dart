@@ -129,31 +129,26 @@ class $TaskRowsTable extends TaskRows with TableInfo<$TaskRowsTable, TaskRow> {
   TaskRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return TaskRow(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}id'],
-          )!,
-      title:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}title'],
-          )!,
-      status:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}status'],
-          )!,
-      syncStatus:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}sync_status'],
-          )!,
-      updatedAt:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}updated_at'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      title: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}title'],
+      )!,
+      status: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}status'],
+      )!,
+      syncStatus: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}sync_status'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
     );
   }
 
@@ -242,8 +237,9 @@ class TaskRow extends DataClass implements Insertable<TaskRow> {
       id: data.id.present ? data.id.value : this.id,
       title: data.title.present ? data.title.value : this.title,
       status: data.status.present ? data.status.value : this.status,
-      syncStatus:
-          data.syncStatus.present ? data.syncStatus.value : this.syncStatus,
+      syncStatus: data.syncStatus.present
+          ? data.syncStatus.value
+          : this.syncStatus,
       updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
     );
   }
@@ -505,31 +501,26 @@ class $SyncOutboxTable extends SyncOutbox
   SyncOutboxData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return SyncOutboxData(
-      id:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.int,
-            data['${effectivePrefix}id'],
-          )!,
-      operation:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}operation'],
-          )!,
-      entityId:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}entity_id'],
-          )!,
-      payloadJson:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}payload_json'],
-          )!,
-      createdAt:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}created_at'],
-          )!,
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      operation: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}operation'],
+      )!,
+      entityId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}entity_id'],
+      )!,
+      payloadJson: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}payload_json'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
     );
   }
 
@@ -616,8 +607,9 @@ class SyncOutboxData extends DataClass implements Insertable<SyncOutboxData> {
       id: data.id.present ? data.id.value : this.id,
       operation: data.operation.present ? data.operation.value : this.operation,
       entityId: data.entityId.present ? data.entityId.value : this.entityId,
-      payloadJson:
-          data.payloadJson.present ? data.payloadJson.value : this.payloadJson,
+      payloadJson: data.payloadJson.present
+          ? data.payloadJson.value
+          : this.payloadJson,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
     );
   }
@@ -801,16 +793,14 @@ class $CacheMetaTable extends CacheMeta
   CacheMetaData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return CacheMetaData(
-      key:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.string,
-            data['${effectivePrefix}key'],
-          )!,
-      valueAt:
-          attachedDatabase.typeMapping.read(
-            DriftSqlType.dateTime,
-            data['${effectivePrefix}value_at'],
-          )!,
+      key: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}key'],
+      )!,
+      valueAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}value_at'],
+      )!,
     );
   }
 
@@ -1101,12 +1091,12 @@ class $$TaskRowsTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$TaskRowsTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () => $$TaskRowsTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer:
-              () => $$TaskRowsTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer: () =>
+              $$TaskRowsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$TaskRowsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$TaskRowsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -1139,16 +1129,9 @@ class $$TaskRowsTableTableManager
                 updatedAt: updatedAt,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -1305,12 +1288,12 @@ class $$SyncOutboxTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$SyncOutboxTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () => $$SyncOutboxTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer:
-              () => $$SyncOutboxTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer: () =>
+              $$SyncOutboxTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$SyncOutboxTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$SyncOutboxTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<int> id = const Value.absent(),
@@ -1339,16 +1322,9 @@ class $$SyncOutboxTableTableManager
                 payloadJson: payloadJson,
                 createdAt: createdAt,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );
@@ -1463,12 +1439,12 @@ class $$CacheMetaTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer:
-              () => $$CacheMetaTableFilterComposer($db: db, $table: table),
-          createOrderingComposer:
-              () => $$CacheMetaTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer:
-              () => $$CacheMetaTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer: () =>
+              $$CacheMetaTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$CacheMetaTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$CacheMetaTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> key = const Value.absent(),
@@ -1486,16 +1462,9 @@ class $$CacheMetaTableTableManager
                 valueAt: valueAt,
                 rowid: rowid,
               ),
-          withReferenceMapper:
-              (p0) =>
-                  p0
-                      .map(
-                        (e) => (
-                          e.readTable(table),
-                          BaseReferences(db, table, e),
-                        ),
-                      )
-                      .toList(),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
           prefetchHooksCallback: null,
         ),
       );

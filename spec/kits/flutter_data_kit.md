@@ -9,8 +9,8 @@ flutter_data_kit/                 # contract + PagedList + cacheFor
 packages/
   flutter_data_kit_dio/
   flutter_data_kit_supabase/
-  flutter_data_kit_firebase/      # later
-  flutter_data_kit_drift/         # later
+  flutter_data_kit_firebase/      # mapFirebase + Auth/Firestore/Storage/FCM
+  flutter_data_kit_drift/         # in progress / local
 ```
 
 ## Owns (core package)

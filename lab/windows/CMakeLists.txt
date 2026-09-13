@@ -2,6 +2,23 @@
 cmake_minimum_required(VERSION 3.14)
 project(lemsa_lab LANGUAGES CXX)
 
+# Flutter may pick VS Build Tools without ATL. flutter_secure_storage_windows
+# needs atlstr.h — borrow ATLMFC from VS Community when Build Tools lacks it.
+if(WIN32)
+  file(GLOB _lemsa_atlmfc_inc
+    "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/*/atlmfc/include")
+  file(GLOB _lemsa_atlmfc_lib
+    "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/*/atlmfc/lib/x64")
+  if(_lemsa_atlmfc_inc)
+    list(GET _lemsa_atlmfc_inc 0 _lemsa_atl_inc)
+    include_directories("${_lemsa_atl_inc}")
+  endif()
+  if(_lemsa_atlmfc_lib)
+    list(GET _lemsa_atlmfc_lib 0 _lemsa_atl_lib)
+    link_directories("${_lemsa_atl_lib}")
+  endif()
+endif()
+
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
 set(BINARY_NAME "lemsa_lab")

@@ -1,5 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/backend/lab_backend.dart';
+import '../../../core/backend/task_source_factory.dart';
 import '../../../core/database/lab_database.dart';
 import '../../auth/state/session_provider.dart';
 import '../data/cached_task_repository.dart';
@@ -17,7 +19,10 @@ class OfflineModeNotifier extends Notifier<bool> {
 
   void set(bool value) {
     state = value;
-    ref.read(mockTaskSourceProvider).forceOffline = value;
+    final remote = ref.read(taskRemoteSourceProvider);
+    if (remote is MockTaskSource) {
+      remote.forceOffline = value;
+    }
   }
 }
 
@@ -31,7 +36,10 @@ class FlakyApiNotifier extends Notifier<bool> {
 
   void set(bool value) {
     state = value;
-    ref.read(mockTaskSourceProvider).failRate = value ? 0.4 : 0;
+    final remote = ref.read(taskRemoteSourceProvider);
+    if (remote is MockTaskSource) {
+      remote.failRate = value ? 0.4 : 0;
+    }
   }
 }
 
@@ -49,19 +57,36 @@ final taskLocalStoreProvider = Provider<DriftTaskLocalStore>((ref) {
   return DriftTaskLocalStore(ref.watch(labDatabaseProvider));
 });
 
+/// Active remote source selected by [LabBackend.current] (T22).
+final taskRemoteSourceProvider = Provider<TaskSource>((ref) {
+  return const TaskSourceFactory().create(
+    backend: LabBackend.current,
+    supabaseReady: false,
+    firebaseReady: false,
+  );
+});
+
+/// Kept for tests / profile demos that cast to [MockTaskSource].
 final mockTaskSourceProvider = Provider<MockTaskSource>((ref) {
-  return MockTaskSource();
+  final remote = ref.watch(taskRemoteSourceProvider);
+  if (remote is MockTaskSource) {
+    return remote;
+  }
+  return MockTaskSource(delay: Duration.zero);
 });
 
 final taskRepositoryProvider = Provider<TaskRepository>((ref) {
-  final remote = ref.watch(mockTaskSourceProvider);
+  final remote = ref.watch(taskRemoteSourceProvider);
   return CachedTaskRepository(
     remote: remote,
     local: ref.watch(taskLocalStoreProvider),
     db: ref.watch(labDatabaseProvider),
-    isOffline: () =>
-        ref.read(offlineModeProvider) ||
-        ref.read(mockTaskSourceProvider).forceOffline,
+    isOffline: () {
+      final source = ref.read(taskRemoteSourceProvider);
+      final forced =
+          source is MockTaskSource ? source.forceOffline : false;
+      return ref.read(offlineModeProvider) || forced;
+    },
   );
 });
 

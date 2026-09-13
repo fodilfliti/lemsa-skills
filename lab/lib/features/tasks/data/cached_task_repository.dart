@@ -1,7 +1,8 @@
 import 'dart:convert';
 
+import 'package:lemsa_core_kit/lemsa_core_kit.dart';
+
 import '../../../core/database/lab_database.dart';
-import '../../../stubs/failures.dart';
 import '../domain/task_draft.dart';
 import '../domain/task_model.dart';
 import '../domain/task_query.dart';
@@ -14,20 +15,24 @@ import 'task_repository.dart';
 /// - Read: local [watchTasks] stream; [sync] pulls remote + flushes outbox.
 /// - Write: optimistic local row + outbox entry, then remote when online.
 class CachedTaskRepository implements TaskRepository {
+  /// Public param names (`remote`, `local`, …) keep call sites stable across
+  /// analyzer versions that disagree on `this._field` named formals.
   CachedTaskRepository({
     required TaskSource remote,
     required DriftTaskLocalStore local,
     required bool Function() isOffline,
     required LabDatabase db,
-  })  : _remote = remote,
-        _local = local,
-        _isOffline = isOffline,
-        _db = db;
+  }) {
+    _remote = remote;
+    _local = local;
+    _isOffline = isOffline;
+    _db = db;
+  }
 
-  final TaskSource _remote;
-  final DriftTaskLocalStore _local;
-  final bool Function() _isOffline;
-  final LabDatabase _db;
+  late final TaskSource _remote;
+  late final DriftTaskLocalStore _local;
+  late final bool Function() _isOffline;
+  late final LabDatabase _db;
 
   @override
   Stream<List<TaskWithMeta>> watchTasks(TaskQuery query) =>
@@ -41,7 +46,7 @@ class CachedTaskRepository implements TaskRepository {
     }
     try {
       await sync(forceRemote: true);
-      return _local.readTasks(query);
+      return await _local.readTasks(query);
     } on AppFailure {
       if (cached.isNotEmpty) {
         return cached;
@@ -53,7 +58,7 @@ class CachedTaskRepository implements TaskRepository {
   @override
   Future<TaskModel> create(TaskDraft draft) async {
     if (draft.title.trim().isEmpty) {
-      throw const ValidationFailure('title');
+      throw const ValidationFailure({'title': 'invalid'});
     }
 
     final optimistic = TaskModel(

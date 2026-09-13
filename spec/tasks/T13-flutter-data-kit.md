@@ -16,3 +16,6 @@ T10.
 ## Done when
 
 Mapper tests pass. PagedList mixin works in example app with fake source.
+
+Drift adapter (`flutter_data_kit_drift`) is a follow-up in the same workspace
+(family status: In progress / local).

@@ -13,8 +13,9 @@ class HomeShellPage extends StatelessWidget {
     return AutoTabsScaffold(
       routes: const [
         TaskListRoute(),
-        CalendarRoute(),
-        StatsRoute(),
+        ProjectListRoute(),
+        LabelListRoute(),
+        InboxRoute(),
         ProfileRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
@@ -27,12 +28,16 @@ class HomeShellPage extends StatelessWidget {
               label: t.tabs.tasks,
             ),
             NavigationDestination(
-              icon: const Icon(Icons.calendar_month),
-              label: t.tabs.calendar,
+              icon: const Icon(Icons.folder_outlined),
+              label: t.tabs.projects,
             ),
             NavigationDestination(
-              icon: const Icon(Icons.bar_chart),
-              label: t.tabs.stats,
+              icon: const Icon(Icons.label_outline),
+              label: t.tabs.labels,
+            ),
+            NavigationDestination(
+              icon: const Icon(Icons.inbox_outlined),
+              label: t.tabs.inbox,
             ),
             NavigationDestination(
               icon: const Icon(Icons.person),

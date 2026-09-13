@@ -3,7 +3,13 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  sqlite3_flutter_libs
+  app_links
+  cloud_firestore
+  firebase_auth
+  firebase_core
+  firebase_storage
+  flutter_secure_storage_windows
+  url_launcher_windows
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

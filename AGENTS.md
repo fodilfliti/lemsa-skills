@@ -57,4 +57,4 @@ When working on `lab/` scenarios, run `bd prime` at session start. Match issue t
 
 ## Out of scope unless asked
 
-Writing kit implementation code here, publishing anything to pub.dev, and editing the reference apps (`lightnessword`, `kiwash`, `kiwash_provider`). The migration playbook in `spec/migration.md` describes those edits; it does not perform them.
+Writing kit implementation code here (except `lab/`), publishing to pub.dev, and editing reference apps (`lightnessword`, `kiwash`, `kiwash_provider`) — those apps are **not** family migration targets. Active consumer work is the **lab showcase** (`spec/tasks/T20`–`T24`). `spec/migration.md` is archived.

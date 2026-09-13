@@ -1,10 +1,11 @@
 import 'dart:developer' as developer;
 
+import 'package:lemsa_core_kit/lemsa_core_kit.dart';
 import 'package:redact/redact.dart';
 
-import '../../stubs/failures.dart';
-
-/// Stub until [lemsa_core_kit] AppLogger ships.
+/// App-owned logger with redact (lemsa.yaml `logging.redact: true`).
+///
+/// Kit [AppLogger] has no redact hook — keep this thin wrapper in lab.
 class AppLogger {
   AppLogger({this.redactEnabled = true}) : _redactor = Redactor();
 

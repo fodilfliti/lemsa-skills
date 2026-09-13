@@ -1,8 +1,9 @@
+import 'package:lemsa_core_kit/lemsa_core_kit.dart';
+
 import '../domain/task_draft.dart';
 import '../domain/task_model.dart';
 import '../domain/task_query.dart';
 import '../domain/task_with_meta.dart';
-import '../../../stubs/failures.dart';
 
 /// Snapshot after a cache sync pass (remote pull + outbox flush).
 class SyncSnapshot {
@@ -84,7 +85,7 @@ class TaskRepositoryImpl implements TaskRepository {
   @override
   Future<TaskModel> create(TaskDraft draft) {
     if (draft.title.trim().isEmpty) {
-      throw const ValidationFailure('title');
+      throw const ValidationFailure({'title': 'invalid'});
     }
     return _source.create(draft);
   }

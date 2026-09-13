@@ -1,18 +1,26 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lemsa_core_kit/lemsa_core_kit.dart';
 
-import 'package:lemsa_lab/stubs/failures.dart';
+import 'package:lemsa_lab/core/failures/failure_text.dart';
+import 'package:lemsa_lab/i18n/strings.g.dart';
 
 void main() {
-  group('AppFailure', () {
-    test('failureMessage covers validation', () {
+  setUpAll(() => LocaleSettings.setLocale(AppLocale.en));
+
+  group('failureText', () {
+    test('covers validation fields', () {
       expect(
-        failureMessage(const ValidationFailure('title')),
+        failureText(const ValidationFailure({'title': 'invalid'})),
         'Invalid title',
       );
     });
 
     test('cancelled has empty message', () {
-      expect(failureMessage(const CancelledFailure()), '');
+      expect(failureText(const CancelledFailure()), '');
+    });
+
+    test('network maps to slang', () {
+      expect(failureText(const NetworkFailure()), 'Network error — try again');
     });
   });
 }

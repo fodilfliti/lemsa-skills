@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_page_kit/flutter_page_kit.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lemsa_core_kit/lemsa_core_kit.dart';
 
 import 'package:lemsa_lab/core/failures/field_error_text.dart';
-import 'package:lemsa_lab/core/widgets/lemsa_loader.dart';
 import 'package:lemsa_lab/features/tasks/controllers/task_form_data.dart';
 import 'package:lemsa_lab/features/tasks/data/sources/mock_task_source.dart';
 import 'package:lemsa_lab/features/tasks/data/task_repository.dart';
 import 'package:lemsa_lab/features/tasks/domain/task_model.dart';
 import 'package:lemsa_lab/features/tasks/domain/task_query.dart';
 import 'package:lemsa_lab/i18n/strings.g.dart';
-import 'package:lemsa_lab/stubs/failures.dart';
-import 'package:lemsa_lab/stubs/notices.dart';
-import 'package:lemsa_lab/stubs/page_kit.dart';
-import 'package:lemsa_lab/stubs/page_navigator.dart';
 
 void main() {
   setUpAll(() => LocaleSettings.setLocale(AppLocale.en));

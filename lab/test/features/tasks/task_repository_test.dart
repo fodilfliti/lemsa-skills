@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lemsa_core_kit/lemsa_core_kit.dart';
 
 import 'package:lemsa_lab/features/tasks/data/mappers/task_mapper.dart';
 import 'package:lemsa_lab/features/tasks/data/sources/mock_task_source.dart';
@@ -6,7 +7,6 @@ import 'package:lemsa_lab/features/tasks/data/task_repository.dart';
 import 'package:lemsa_lab/features/tasks/domain/task_draft.dart';
 import 'package:lemsa_lab/features/tasks/domain/task_model.dart';
 import 'package:lemsa_lab/features/tasks/domain/task_query.dart';
-import 'package:lemsa_lab/stubs/failures.dart';
 
 void main() {
   group('MockTaskSource', () {

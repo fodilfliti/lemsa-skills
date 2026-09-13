@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:lemsa_lab/stubs/core/extensions.dart';
+import 'package:lemsa_core_kit/lemsa_core_kit.dart';
 
 void main() {
   group('String?', () {

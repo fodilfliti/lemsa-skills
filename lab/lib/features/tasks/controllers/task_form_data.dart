@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_page_kit/flutter_page_kit.dart';
 
 import '../../../i18n/strings.g.dart';
-import '../../../stubs/notices.dart';
-import '../../../stubs/page_kit.dart';
-import '../../../stubs/page_navigator.dart';
-import '../../../stubs/validators.dart';
 import '../data/task_repository.dart';
 import '../domain/task_draft.dart';
 import '../domain/task_model.dart';

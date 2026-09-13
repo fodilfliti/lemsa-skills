@@ -1,6 +1,42 @@
-# Lab scenarios S01–S12
+# Lab scenarios
+
+## Portfolio (S-portfolio-*)
+
+### S-portfolio-01 — multi-model navigation
+
+**Goal:** Recruiter sees Tasks, Projects, Labels, Inbox, Profile as distinct features.
+
+**Done when:** Home shell has five destinations; each list loads on mock.
+
+### S-portfolio-02 — paged projects
+
+**Goal:** `PagedList` + load-more / refresh on Projects.
+
+**Files:** `features/projects/**`, `test/features/projects/project_form_harness_test.dart`
+
+**Done when:** PageHarness create works; list pages beyond first page.
+
+### S-portfolio-03 — backend switch without UI edits
+
+**Goal:** `LAB_BACKEND` selects TaskSource via factory.
+
+**Files:** `core/backend/*`, `test/core/backend_factory_test.dart`, README “Switch backend”
+
+**Done when:** Factory test covers mock/rest/supabase/firebase; default mock analyze+test green.
+
+### S-portfolio-04 — kit surface login + form
+
+**Goal:** FormPage + EmailField/PasswordField login; FormPage + Money/Date project form.
+
+**Done when:** Widget smoke (login) + project harness green.
+
+---
+
+## Classic sandbox S01–S12
 
 Each entry: **goal**, **files**, **done when**, **do not**.
+
+Stubs under `lib/stubs/` are **retired** (T20) — use kit imports.
 
 ---
 
@@ -8,7 +44,7 @@ Each entry: **goal**, **files**, **done when**, **do not**.
 
 **Goal:** `AppFailure` hierarchy, per-step catch in controller, redacted logging.
 
-**Files:** `lib/stubs/failures.dart`, `lib/core/logging/app_logger.dart`, `test/core/failures_test.dart`
+**Files:** `lemsa_core_kit`, `lib/core/logging/app_logger.dart`, `test/core/failures_test.dart`
 
 **Done when:** analyze + test green; logs scrub emails via `redact`.
 
@@ -18,11 +54,11 @@ Each entry: **goal**, **files**, **done when**, **do not**.
 
 ## S02 — test page harness
 
-**Goal:** `PageHarness` mounts mixin, keyed `busy.of`, field factories (`text`/`flag`/`keep`), inline `LemsaLoader` on save.
+**Goal:** `PageHarness` mounts mixin, keyed `busy.of`, field factories, inline `LemsaLoader` on save.
 
-**Files:** `lib/stubs/page_kit.dart`, `lib/stubs/core/`, `test/core/page_data_test.dart`, `test/features/tasks/task_form_harness_test.dart`
+**Files:** `flutter_page_kit`, `test/core/page_data_test.dart`, `test/features/tasks/task_form_harness_test.dart`
 
-**Done when:** harness + page_data tests pass; save key toggles busy independently; unmount disposes registry in reverse order.
+**Done when:** harness + page_data tests pass.
 
 **Do not:** import Riverpod in controller; override `dispose()` in a feature mixin.
 
@@ -32,45 +68,29 @@ Each entry: **goal**, **files**, **done when**, **do not**.
 
 **Goal:** domain → repository → provider → `AsyncView` list.
 
-**Files:** `features/tasks/domain/*`, `data/task_repository.dart`, `state/task_providers.dart`, `pages/task_list_page.dart`
+**Files:** `features/tasks/**`
 
 **Done when:** list renders mock tasks; loading uses `LemsaLoader`.
-
-**Do not:** Map wrappers in repository public API.
 
 ---
 
 ## S04 — test task form flow
 
-**Goal:** controller mixin uses `text(validators:)` + `validated` + `validateForm`; page maps `errorCode` via `fieldErrorText`; cross-field confirm; busy lock.
+**Goal:** controller mixin + FormPage; inline validation; busy lock.
 
-**Files:** `controllers/task_form_data.dart`, `pages/add_task_page.dart`, `stubs/validators.dart`, `core/failures/field_error_text.dart`
-
-**Done when:** submit upserts; empty / too-short / mismatch blocked with `errorText`; while saving, fields and pop are locked.
-
-**Do not:** Riverpod in controller; `t.*` in validators; hand `dispose()`; build `flutter_input_kit` widgets.
+**Files:** `controllers/task_form_data.dart`, `pages/add_task_page.dart`
 
 ---
 
 ## S05 — test mock backend
 
-**Goal:** `MockTaskSource` swappable via provider override.
-
-**Files:** `data/sources/mock_task_source.dart`, `state/task_providers.dart`
-
-**Done when:** override test proves swap without page changes.
-
-**Do not:** wire Supabase by default.
+**Goal:** MockTaskSource via factory / provider.
 
 ---
 
 ## S06 — test supabase path (explicit)
 
-**Goal:** `SupabaseTaskSource` stub behind `TaskSource`.
-
-**Files:** `data/sources/task_source_supabase.dart`
-
-**Done when:** stub compiles; provider override documented.
+**Goal:** `SupabaseTaskSource` behind `TaskSource`; `LAB_BACKEND=supabase`.
 
 **Do not:** add credentials to repo.
 
@@ -78,52 +98,34 @@ Each entry: **goal**, **files**, **done when**, **do not**.
 
 ## S07 — test drift path
 
-**Goal:** Drift local cache + outbox + `CachedTaskRepository` + reactive `watch()` stream.
+**Goal:** Drift local cache + outbox + `CachedTaskRepository`.
 
-**Files:** `core/database/*`, `data/local/drift_task_local_store.dart`, `data/cached_task_repository.dart`, `test/features/tasks/cached_task_repository_test.dart`
-
-**Done when:** offline create shows pending badge; sync flushes; sign-out wipes DB.
-
-**Do not:** use Riverpod as cache of record.
+---
 
 ## S08 — test firebase path (explicit)
 
-**Goal:** `FirebaseTaskSource` stub.
-
-**Files:** `data/sources/task_source_firebase.dart`
-
-**Done when:** stub compiles.
+**Goal:** `FirebaseTaskSource` stub/fallback; `LAB_BACKEND=firebase`.
 
 ---
 
 ## S09 — test nav + auth guard
 
-**Goal:** auto_route + session mock (incremental).
-
-**Do not:** implement until nav kit stub exists.
+**Goal:** auto_route + AuthGuard / GuestGuard from `flutter_nav_kit`.
 
 ---
 
 ## S10 — test i18n
 
-**Goal:** slang keys on task strings (incremental).
+**Goal:** slang keys for new features.
 
 ---
 
-## S11 — test retrofit path (explicit)
+## S11 — test retrofit / REST path
 
-**Goal:** Retrofit client + DTO + mapper + REST source.
-
-**Files:** `data/api/task_api.dart`, `data/dto/task_dto.dart`, `data/mappers/task_mapper.dart`, `data/sources/task_source_rest.dart`
-
-**Done when:** build_runner green; REST source maps DTO → domain.
+**Goal:** `RestTaskSource` with Dio + `runDio` (JSONPlaceholder).
 
 ---
 
-## S12 — test loon path (explicit)
+## S12 — test loon path
 
-**Goal:** Loon cache adapter — **only when user asks**.
-
-**Files:** `data/sources/task_source_loon.dart`
-
-**Do not:** add `loon` to pubspec unless triggered.
+**Status:** obsolete for showcase (optional); prefer Drift cache (S07).

@@ -46,6 +46,9 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final Translations$home$en home = Translations$home$en._(_root);
 	late final Translations$cache$en cache = Translations$cache$en._(_root);
 	late final Translations$tasks$en tasks = Translations$tasks$en._(_root);
+	late final Translations$projects$en projects = Translations$projects$en._(_root);
+	late final Translations$labels$en labels = Translations$labels$en._(_root);
+	late final Translations$inbox$en inbox = Translations$inbox$en._(_root);
 	late final Translations$validation$en validation = Translations$validation$en._(_root);
 	late final Translations$errors$en errors = Translations$errors$en._(_root);
 }
@@ -76,6 +79,9 @@ class Translations$auth$en {
 	/// en: 'Email'
 	String get emailLabel => 'Email';
 
+	/// en: 'Password'
+	String get passwordLabel => 'Password';
+
 	/// en: 'Sign in'
 	String get signIn => 'Sign in';
 
@@ -87,6 +93,9 @@ class Translations$auth$en {
 
 	/// en: 'Signed in as $email'
 	String signedInAs({required Object email}) => 'Signed in as ${email}';
+
+	/// en: 'Active backend: $backend'
+	String backendLabel({required Object backend}) => 'Active backend: ${backend}';
 }
 
 // Path: tabs
@@ -100,11 +109,14 @@ class Translations$tabs$en {
 	/// en: 'Tasks'
 	String get tasks => 'Tasks';
 
-	/// en: 'Calendar'
-	String get calendar => 'Calendar';
+	/// en: 'Projects'
+	String get projects => 'Projects';
 
-	/// en: 'Stats'
-	String get stats => 'Stats';
+	/// en: 'Labels'
+	String get labels => 'Labels';
+
+	/// en: 'Inbox'
+	String get inbox => 'Inbox';
 
 	/// en: 'Profile'
 	String get profile => 'Profile';
@@ -215,6 +227,87 @@ class Translations$tasks$en {
 	String get syncFailed => 'Sync failed';
 }
 
+// Path: projects
+class Translations$projects$en {
+	Translations$projects$en._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Projects'
+	String get title => 'Projects';
+
+	/// en: 'Add project'
+	String get addTitle => 'Add project';
+
+	/// en: 'Name'
+	String get nameLabel => 'Name';
+
+	/// en: 'Budget'
+	String get budgetLabel => 'Budget';
+
+	/// en: 'Due date'
+	String get dueLabel => 'Due date';
+
+	/// en: 'Save'
+	String get save => 'Save';
+
+	/// en: 'Project saved'
+	String get saved => 'Project saved';
+
+	/// en: 'No projects yet'
+	String get empty => 'No projects yet';
+
+	/// en: 'Load more'
+	String get loadMore => 'Load more';
+
+	/// en: 'Budget $amount'
+	String budgetLine({required Object amount}) => 'Budget ${amount}';
+}
+
+// Path: labels
+class Translations$labels$en {
+	Translations$labels$en._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Labels'
+	String get title => 'Labels';
+
+	/// en: 'Label name'
+	String get nameLabel => 'Label name';
+
+	/// en: 'Add'
+	String get add => 'Add';
+
+	/// en: 'Label added'
+	String get saved => 'Label added';
+
+	/// en: 'No labels yet'
+	String get empty => 'No labels yet';
+}
+
+// Path: inbox
+class Translations$inbox$en {
+	Translations$inbox$en._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Inbox'
+	String get title => 'Inbox';
+
+	/// en: 'Inbox is empty'
+	String get empty => 'Inbox is empty';
+
+	/// en: 'Load more'
+	String get loadMore => 'Load more';
+}
+
 // Path: validation
 class Translations$validation$en {
 	Translations$validation$en._(this._root);
@@ -237,6 +330,9 @@ class Translations$validation$en {
 
 	/// en: 'Check the form'
 	String get form => 'Check the form';
+
+	/// en: 'Enter an amount'
+	String get money => 'Enter an amount';
 }
 
 // Path: errors
@@ -271,13 +367,16 @@ extension on Translations {
 			'app.title' => 'Lemsa Lab',
 			'auth.title' => 'Welcome',
 			'auth.emailLabel' => 'Email',
+			'auth.passwordLabel' => 'Password',
 			'auth.signIn' => 'Sign in',
 			'auth.signOut' => 'Sign out',
 			'auth.emailRequired' => 'Enter your email',
 			'auth.signedInAs' => ({required Object email}) => 'Signed in as ${email}',
+			'auth.backendLabel' => ({required Object backend}) => 'Active backend: ${backend}',
 			'tabs.tasks' => 'Tasks',
-			'tabs.calendar' => 'Calendar',
-			'tabs.stats' => 'Stats',
+			'tabs.projects' => 'Projects',
+			'tabs.labels' => 'Labels',
+			'tabs.inbox' => 'Inbox',
 			'tabs.profile' => 'Profile',
 			'home.calendarPlaceholder' => 'Calendar — coming soon',
 			'home.statsPlaceholder' => 'Stats — coming soon',
@@ -305,11 +404,30 @@ extension on Translations {
 			'tasks.emptyCache' => 'No cached tasks — pull to sync from remote',
 			'tasks.pendingSync' => 'Pending sync',
 			'tasks.syncFailed' => 'Sync failed',
+			'projects.title' => 'Projects',
+			'projects.addTitle' => 'Add project',
+			'projects.nameLabel' => 'Name',
+			'projects.budgetLabel' => 'Budget',
+			'projects.dueLabel' => 'Due date',
+			'projects.save' => 'Save',
+			'projects.saved' => 'Project saved',
+			'projects.empty' => 'No projects yet',
+			'projects.loadMore' => 'Load more',
+			'projects.budgetLine' => ({required Object amount}) => 'Budget ${amount}',
+			'labels.title' => 'Labels',
+			'labels.nameLabel' => 'Label name',
+			'labels.add' => 'Add',
+			'labels.saved' => 'Label added',
+			'labels.empty' => 'No labels yet',
+			'inbox.title' => 'Inbox',
+			'inbox.empty' => 'Inbox is empty',
+			'inbox.loadMore' => 'Load more',
 			'validation.required' => 'Required',
 			'validation.email' => 'Invalid email',
 			'validation.minLength' => ({required Object n}) => 'At least ${n} characters',
 			'validation.passwordMismatch' => 'Passwords do not match',
 			'validation.form' => 'Check the form',
+			'validation.money' => 'Enter an amount',
 			'errors.network' => 'Network error — try again',
 			'errors.validation' => ({required Object field}) => 'Invalid ${field}',
 			'errors.notFound' => 'Not found',

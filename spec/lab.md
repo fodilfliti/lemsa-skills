@@ -1,65 +1,64 @@
-# Lemsa lab — architecture sandbox
+# Lemsa lab — architecture sandbox + **portfolio showcase**
 
-Runnable proof for kit ideas and skills **before** they ship to pub.dev or `npx skills add`.
+Runnable proof for kit ideas **and** the recruiter-facing demo that uses the whole family.
+
+**Start here for humans:** [`lab/README.md`](../lab/README.md)
 
 ## What it is
 
 | Path | Role |
 | --- | --- |
-| `lab/` | Flutter app — Task Tracker example, mock backend by default |
-| `lab/spec/scenarios.md` | Scenario definitions S01–S12 |
-| `spec/lab.md` | This file — why, promotion rules |
-| `.beads/` + `bd` CLI | Runtime task graph for scenario execution |
+| `lab/` | Flutter **showcase app** — multi-model product surface, swappable backends |
+| [`lab/README.md`](../lab/README.md) | Recruiter front page — run, switch backend, kit map |
+| `lab/spec/scenarios.md` | Scenario definitions (sandbox + portfolio) |
+| `spec/lab.md` | This file — why, promotion, showcase rules |
+| `.beads/` + `bd` CLI | Optional runtime task graph for scenarios |
 
-The skills repo is **mostly docs**. `lab/` is the **only Dart** here until kits exist in sibling repos.
+The skills repo is **mostly docs**. `lab/` is the **only Dart app** here. Sibling kit repos hold publishable packages.
 
-## Mock-first
+## Showcase goals (T20–T24) — implemented
 
-Default `lab/lemsa.yaml` sets `backend: mock`. The lab proves **layer mapping** and **swappable adapters**, not live Supabase/Firebase.
+1. Path-depend **all** Lemsa kits (scale, theme, core, page, input, data+adapters, nav, app).
+2. Multiple domain models / features (Task, Project, Label, Inbox + Profile/session).
+3. **Four backends in code** — `mock`, `rest` (Dio), `supabase`, `firebase` — selected via `--dart-define=LAB_BACKEND=…`.
+4. Pages never import vendor SDKs; DI/`TaskSourceFactory` picks the source.
+5. Init hooks for Supabase/Firebase only when selected; missing credentials fall back to mock.
 
-When you say **“test supabase path”** (S06), an agent adds `SupabaseTaskSource` behind the same `TaskSource` contract — pages and controllers stay untouched.
+## Mock-first CI
+
+Default `lab/lemsa.yaml` and unset dart-define → `backend: mock`. Cold clone works without secrets.
 
 ## Promotion workflow
 
 ```text
 idea → implement in lab/ → you review → promote?
-  ├─ API pattern     → extract to kit repo (T10–T14)
+  ├─ API pattern     → extract to kit repo
   ├─ agent rule      → update skills/
   └─ design only     → update spec/
 ```
 
 Rules:
 
-1. Nothing publishes until the covering lab scenario passes (`fvm flutter analyze` + `fvm flutter test`).
-2. Lab may use **path deps** to in-progress kits or **stubs** in `lab/lib/stubs/` until kits ship.
-3. **“Test option X”** → `bd ready` → claim issue `Lab S0X` → read `lab/spec/scenarios.md` → implement → close bd issue.
-4. Stubs are **deleted or replaced** on promotion — never copied into kit repos.
+1. Nothing publishes until `fvm flutter analyze` + `fvm flutter test` pass in `lab/`.
+2. Lab uses **path deps** to kits.
+3. Stubs are deleted when kits land — never copied into kit repos.
+4. **kiwash / lightnessword are not active migration targets** — archived; lab is the reference consumer.
 
-## Extract to `flutter_data_kit` (T13)
+## Out of scope
 
-When T13 starts, promote from lab:
-
-- `TaskSource` contract pattern → `PagedSource` / repository base in `flutter_data_kit`
-- `MockTaskSource` → test fixture in kit repo
-- Adapter stubs (`*_source_supabase.dart`, etc.) → respective adapter packages
-- Remove duplicated stubs from `lab/lib/stubs/` as real kit imports land
+- Migrating `kiwash` / `lightnessword` (see [migration.md](migration.md) — archived).
+- Publishing `lab/` to pub.dev.
 
 ## Task tracking
 
-- **Durable spec:** `spec/tasks/Txx` + `lab/spec/scenarios.md`
-- **Live execution:** Beads (`bd`) issues titled `Lab S01: …` through `Lab S12: …`
-
-Agents use `bd` for status, not markdown TODO lists. Conservative git policy: track with bd; do not commit/push unless asked.
+- Showcase: [T20](tasks/T20-lab-path-deps.md)–[T24](tasks/T24-lab-recruiter-docs.md)
+- Early sandbox: [T06](tasks/T06-lemsa-lab.md)
 
 ## CLI
 
-From `lab/tool/lab_cli`:
+From `lab/tool/lab_cli` (if present):
 
 ```bash
-fvm dart run lab_cli:lab feature tasks
-fvm dart run lab_cli:lab scenario S04
+fvm dart run lab_cli:lab feature <name>
 fvm dart run lab_cli:lab adapter supabase
-fvm dart run lab_cli:lab rest tasks
 ```
-
-See [tasks/T06-lemsa-lab.md](tasks/T06-lemsa-lab.md).

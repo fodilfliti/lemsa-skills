@@ -1,6 +1,8 @@
 # Kit designs
 
-One file per package. Read the kit you're building; read [../package.md](../package.md) for the family map and dependency rules.
+One file per package (agent build checklist). For long-form “what / why / architecture” for humans, use [`../../docs/packages/`](../../docs/packages/README.md).
+
+Read the kit you're building; read [../package.md](../package.md) for the family map and dependency rules.
 
 | Kit | File | Build phase |
 | --- | --- | --- |

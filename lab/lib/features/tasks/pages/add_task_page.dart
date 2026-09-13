@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_page_kit/flutter_page_kit.dart';
+import 'package:flutter_page_kit/flutter_page_kit_riverpod.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_scale_kit/flutter_scale_kit.dart';
 
-import '../../../core/bridge/page_bridge.dart';
+import '../../../core/app_providers.dart';
 import '../../../core/failures/field_error_text.dart';
-import '../../../core/widgets/lemsa_loader.dart';
 import '../../../i18n/strings.g.dart';
-import '../../../stubs/page_kit.dart';
 import '../controllers/task_form_data.dart';
 import '../data/task_repository.dart';
 import '../domain/task_model.dart';
@@ -24,6 +24,12 @@ class AddTaskPage extends ConsumerStatefulWidget {
 class _AddTaskPageState extends ConsumerState<AddTaskPage>
     with PageBridge, PageData<AddTaskPage>, TaskFormData<AddTaskPage> {
   @override
+  get pageNavigatorProvider => navigatorProvider;
+
+  @override
+  get pageNoticesProvider => noticesProvider;
+
+  @override
   TaskRepository get taskRepository => ref.read(taskRepositoryProvider);
 
   @override
@@ -33,11 +39,21 @@ class _AddTaskPageState extends ConsumerState<AddTaskPage>
   Widget build(BuildContext context) {
     final saving = busy.of('save');
 
-    return PopScope(
-      canPop: !saving,
-      child: Scaffold(
-        appBar: AppBar(title: Text(t.tasks.addTitle)),
-        body: SKit.pad(
+    return PageScope(
+      data: this,
+      child: FormPage(
+        title: t.tasks.addTitle,
+        failure: failure,
+        actions: [
+          PageAction(
+            id: 'save',
+            label: t.tasks.save,
+            isPrimary: true,
+            busyKey: 'save',
+            onPressed: saving ? null : submit,
+          ),
+        ],
+        child: SKit.pad(
           SKSize.md,
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -69,20 +85,6 @@ class _AddTaskPageState extends ConsumerState<AddTaskPage>
                 enabled: !saving,
                 textInputAction: TextInputAction.done,
                 onSubmitted: saving ? null : (_) => submit(),
-              ),
-              SKit.vSpaceSize(SKSize.lg),
-              FilledButton(
-                onPressed: saving ? null : submit,
-                child: saving
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const LemsaLoader(size: 20),
-                          SKit.hSpaceSize(SKSize.sm),
-                          Text(t.tasks.saving),
-                        ],
-                      )
-                    : Text(t.tasks.save),
               ),
             ],
           ),

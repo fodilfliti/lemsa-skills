@@ -11,6 +11,22 @@
 part of 'app_router.dart';
 
 /// generated route for
+/// [AddProjectPage]
+class AddProjectRoute extends PageRouteInfo<void> {
+  const AddProjectRoute({List<PageRouteInfo>? children})
+    : super(AddProjectRoute.name, initialChildren: children);
+
+  static const String name = 'AddProjectRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AddProjectPage();
+    },
+  );
+}
+
+/// generated route for
 /// [AddTaskPage]
 class AddTaskRoute extends PageRouteInfo<void> {
   const AddTaskRoute({List<PageRouteInfo>? children})
@@ -27,22 +43,6 @@ class AddTaskRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [CalendarPage]
-class CalendarRoute extends PageRouteInfo<void> {
-  const CalendarRoute({List<PageRouteInfo>? children})
-    : super(CalendarRoute.name, initialChildren: children);
-
-  static const String name = 'CalendarRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const CalendarPage();
-    },
-  );
-}
-
-/// generated route for
 /// [HomeShellPage]
 class HomeShellRoute extends PageRouteInfo<void> {
   const HomeShellRoute({List<PageRouteInfo>? children})
@@ -54,6 +54,38 @@ class HomeShellRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const HomeShellPage();
+    },
+  );
+}
+
+/// generated route for
+/// [InboxPage]
+class InboxRoute extends PageRouteInfo<void> {
+  const InboxRoute({List<PageRouteInfo>? children})
+    : super(InboxRoute.name, initialChildren: children);
+
+  static const String name = 'InboxRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const InboxPage();
+    },
+  );
+}
+
+/// generated route for
+/// [LabelListPage]
+class LabelListRoute extends PageRouteInfo<void> {
+  const LabelListRoute({List<PageRouteInfo>? children})
+    : super(LabelListRoute.name, initialChildren: children);
+
+  static const String name = 'LabelListRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const LabelListPage();
     },
   );
 }
@@ -91,17 +123,17 @@ class ProfileRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [StatsPage]
-class StatsRoute extends PageRouteInfo<void> {
-  const StatsRoute({List<PageRouteInfo>? children})
-    : super(StatsRoute.name, initialChildren: children);
+/// [ProjectListPage]
+class ProjectListRoute extends PageRouteInfo<void> {
+  const ProjectListRoute({List<PageRouteInfo>? children})
+    : super(ProjectListRoute.name, initialChildren: children);
 
-  static const String name = 'StatsRoute';
+  static const String name = 'ProjectListRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const StatsPage();
+      return const ProjectListPage();
     },
   );
 }

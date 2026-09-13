@@ -4,36 +4,74 @@ publish_to: none
 version: 0.1.0
 
 environment:
-  sdk: ^3.7.2
+  sdk: ^3.12.0
+  flutter: ">=3.44.0"
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  flutter_riverpod: ^3.0.3
+  flutter_riverpod: ^3.4.2
   json_annotation: ^4.9.0
   loading_indicator: ^4.0.2
   redact: ^0.1.0
   dio: ^5.11.0
-  flutter_scale_kit: ^2.0.1
-  flutter_scale_theme_kit: ^1.0.1
-  auto_route: ^9.3.0
+  auto_route: ^11.1.0
   slang_flutter: ^4.19.0
-  drift: ^2.28.0
-  drift_flutter: ^0.2.4
-  sqlite3_flutter_libs: ^0.5.0
+  drift: ^2.34.3
+  drift_flutter: ^0.3.1
+  sqlite3_flutter_libs: ^0.6.0
   path: ^1.9.1
   path_provider: ^2.1.5
+
+  # Lemsa kits — path deps (showcase consumer)
+  lemsa_core_kit:
+    path: ../../lemsa_core_kit
+  flutter_page_kit:
+    path: ../../flutter_page_kit
+  flutter_input_kit:
+    path: ../../flutter_input_kit
+  flutter_data_kit:
+    path: ../../flutter_data_kit
+  flutter_data_kit_dio:
+    path: ../../flutter_data_kit/packages/flutter_data_kit_dio
+  flutter_data_kit_drift:
+    path: ../../flutter_data_kit/packages/flutter_data_kit_drift
+  flutter_data_kit_supabase:
+    path: ../../flutter_data_kit/packages/flutter_data_kit_supabase
+  flutter_data_kit_firebase:
+    path: ../../flutter_data_kit/packages/flutter_data_kit_firebase
+  flutter_nav_kit:
+    path: ../../flutter_nav_kit
+  flutter_app_kit:
+    path: ../../flutter_app_kit
+  flutter_scale_kit:
+    path: ../../flutter_scale_kit
+  flutter_scale_theme_kit:
+    path: ../../flutter_scale_theme_kit
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
   slang: ^4.19.0
-  auto_route_generator: ^9.3.1
-  build_runner: ^2.4.15
-  drift_dev: ^2.28.0
+  auto_route_generator: ^10.6.0
+  build_runner: ^2.16.0
+  drift_dev: ^2.34.3
+
+# Path pins for unpublished kits. platform ^3.1+ for Dart 3.13 (no packageRoot).
+# drift_flutter 0.3 wants sqlite3 ^3 / sqlite3_flutter_libs ^0.6; drift adapter lags.
+dependency_overrides:
+  flutter_data_kit:
+    path: ../../flutter_data_kit
+  lemsa_core_kit:
+    path: ../../lemsa_core_kit
+  flutter_page_kit:
+    path: ../../flutter_page_kit
+  platform: ^3.1.6
+  sqlite3: ^3.0.0
+  sqlite3_flutter_libs: ^0.6.0
 
 flutter:
   uses-material-design: true

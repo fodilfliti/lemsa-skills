@@ -1,17 +1,19 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_page_kit/flutter_page_kit.dart';
+import 'package:flutter_page_kit/flutter_page_kit_riverpod.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_scale_theme_kit/flutter_scale_theme_kit.dart';
+import 'package:lemsa_core_kit/lemsa_core_kit.dart';
 
 import '../../../core/app_providers.dart';
 import '../../../core/failures/failure_text.dart';
 import '../../../core/router/app_router.dart';
-import '../../../core/widgets/lemsa_loader.dart';
 import '../../../i18n/strings.g.dart';
-import '../../../stubs/failures.dart';
 import '../data/task_repository.dart';
 import '../domain/task_extensions.dart';
 import '../domain/task_model.dart';
+import '../domain/task_with_meta.dart';
 import '../state/task_providers.dart';
 import '../widgets/task_card.dart';
 
@@ -87,7 +89,7 @@ class _TaskListPageState extends ConsumerState<TaskListPage> {
                 ? const SizedBox(
                     width: 20,
                     height: 20,
-                    child: CircularProgressIndicator(strokeWidth: 2),
+                    child: LemsaLoader(size: 20),
                   )
                 : const Icon(Icons.sync),
           ),
@@ -101,7 +103,10 @@ class _TaskListPageState extends ConsumerState<TaskListPage> {
       ),
       body: RefreshIndicator(
         onRefresh: _sync,
-        child: tasks.when(
+        child: AsyncView<List<TaskWithMeta>>(
+          value: tasks,
+          error: (f) => Center(child: Text(failureText(f))),
+          loading: const LemsaLoader(),
           data: (list) {
             if (list.isEmpty) {
               return ListView(
@@ -126,12 +131,6 @@ class _TaskListPageState extends ConsumerState<TaskListPage> {
               },
             );
           },
-          loading: () => const Center(child: LemsaLoader()),
-          error: (e, _) => Center(
-            child: Text(
-              e is AppFailure ? failureText(e) : t.errors.unknown,
-            ),
-          ),
         ),
       ),
     );

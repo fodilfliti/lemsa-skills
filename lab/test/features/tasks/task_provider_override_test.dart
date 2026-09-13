@@ -8,15 +8,18 @@ import 'package:lemsa_lab/features/tasks/domain/task_query.dart';
 import 'package:lemsa_lab/features/tasks/state/task_providers.dart';
 
 void main() {
-  test('mockTaskSourceProvider can be overridden (S05)', () async {
+  test('taskRemoteSourceProvider can be overridden (S05)', () async {
     final db = LabDatabase.memory();
     addTearDown(db.close);
 
     final container = ProviderContainer(
       overrides: [
         labDatabaseProvider.overrideWithValue(db),
-        mockTaskSourceProvider.overrideWithValue(
-          MockTaskSource(delay: Duration.zero, seed: [const TaskModel(id: 'x', title: 'Override')]),
+        taskRemoteSourceProvider.overrideWithValue(
+          MockTaskSource(
+            delay: Duration.zero,
+            seed: [const TaskModel(id: 'x', title: 'Override')],
+          ),
         ),
       ],
     );

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_page_kit/flutter_page_kit.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:lemsa_lab/stubs/core/disposables.dart';
-import 'package:lemsa_lab/stubs/core/extensions.dart';
-import 'package:lemsa_lab/stubs/page_kit.dart';
+import 'package:lemsa_core_kit/lemsa_core_kit.dart';
 
 void main() {
   test('Disposables.dispose walks reverse registration order', () {
@@ -136,7 +134,7 @@ class _FactoryHost extends StatefulWidget {
 class _FactoryHostState extends State<_FactoryHost>
     with PageData<_FactoryHost> {
   late final name = text(initial: 'Hi');
-  late final on = flag(true);
+  late final on = flag(initial: true);
   late final amount = money(12.5);
   late final due = date(DateTime(2026, 9, 12, 15, 30));
   late final tags = items(['a', 'b']);

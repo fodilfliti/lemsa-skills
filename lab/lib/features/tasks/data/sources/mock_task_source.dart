@@ -1,9 +1,10 @@
 import 'dart:math';
 
+import 'package:lemsa_core_kit/lemsa_core_kit.dart';
+
 import '../../domain/task_draft.dart';
 import '../../domain/task_model.dart';
 import '../../domain/task_query.dart';
-import '../../../../stubs/failures.dart';
 import '../task_repository.dart';
 
 /// In-memory backend — default for lab (`backend: mock`).
@@ -98,7 +99,7 @@ class MockTaskSource implements TaskSource {
     _maybeFail();
     final index = _store.indexWhere((t) => t.id == task.id);
     if (index < 0) {
-      throw const NotFoundFailure();
+      throw const NotFoundFailure('task');
     }
     _store[index] = task;
     return task;
@@ -111,7 +112,7 @@ class MockTaskSource implements TaskSource {
     _maybeFail();
     final index = _store.indexWhere((t) => t.id == id);
     if (index < 0) {
-      throw const NotFoundFailure();
+      throw const NotFoundFailure('task');
     }
     _store.removeAt(index);
   }

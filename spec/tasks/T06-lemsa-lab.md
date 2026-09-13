@@ -42,5 +42,6 @@ T05 (prompts exist).
 ## Do not
 
 - Publish `lab/` to pub.dev.
-- Add real Supabase/Firebase credentials.
-- Edit reference apps (`kiwash`, etc.).
+- Add real Supabase/Firebase credentials to the repo.
+- Edit reference apps (`kiwash`, `lightnessword`) — **out of scope**; use lab showcase T20–T24 instead.
+- Migrate production apps as family tasks (see [../migration.md](../migration.md)).

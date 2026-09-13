@@ -2,6 +2,8 @@
 
 This folder is the **durable brain** for the whole `lemsa_packages` family. It is not user documentation. Do not copy `README.md` here.
 
+For humans (what each package does and **why**): see [`../docs/`](../docs/README.md).
+
 | File | Read when |
 | --- | --- |
 | [package.md](package.md) | Starting anything: what this repo is, the family map, dependency rules |

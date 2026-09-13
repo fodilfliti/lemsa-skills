@@ -5,15 +5,18 @@
   "auth": {
     "title": "Welcome",
     "emailLabel": "Email",
+    "passwordLabel": "Password",
     "signIn": "Sign in",
     "signOut": "Sign out",
     "emailRequired": "Enter your email",
-    "signedInAs": "Signed in as $email"
+    "signedInAs": "Signed in as $email",
+    "backendLabel": "Active backend: $backend"
   },
   "tabs": {
     "tasks": "Tasks",
-    "calendar": "Calendar",
-    "stats": "Stats",
+    "projects": "Projects",
+    "labels": "Labels",
+    "inbox": "Inbox",
     "profile": "Profile"
   },
   "home": {
@@ -48,12 +51,37 @@
     "pendingSync": "Pending sync",
     "syncFailed": "Sync failed"
   },
+  "projects": {
+    "title": "Projects",
+    "addTitle": "Add project",
+    "nameLabel": "Name",
+    "budgetLabel": "Budget",
+    "dueLabel": "Due date",
+    "save": "Save",
+    "saved": "Project saved",
+    "empty": "No projects yet",
+    "loadMore": "Load more",
+    "budgetLine": "Budget $amount"
+  },
+  "labels": {
+    "title": "Labels",
+    "nameLabel": "Label name",
+    "add": "Add",
+    "saved": "Label added",
+    "empty": "No labels yet"
+  },
+  "inbox": {
+    "title": "Inbox",
+    "empty": "Inbox is empty",
+    "loadMore": "Load more"
+  },
   "validation": {
     "required": "Required",
     "email": "Invalid email",
     "minLength": "At least $n characters",
     "passwordMismatch": "Passwords do not match",
-    "form": "Check the form"
+    "form": "Check the form",
+    "money": "Enter an amount"
   },
   "errors": {
     "network": "Network error — try again",

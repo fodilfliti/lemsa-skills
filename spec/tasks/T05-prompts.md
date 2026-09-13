@@ -2,7 +2,7 @@
 
 ## Goal
 
-Self-contained kickoff prompts so a fresh chat can build one kit without this conversation.
+Self-contained kickoff prompts so a fresh chat can build one kit or the lab showcase without this conversation.
 
 ## Read first
 
@@ -16,16 +16,17 @@ Self-contained kickoff prompts so a fresh chat can build one kit without this co
 - `prompts/phase-3-flutter-input-kit.md`
 - `prompts/phase-4-flutter-data-kit.md`
 - `prompts/phase-5-flutter-nav-app-kit.md`
-- `prompts/phase-migrate-kiwash.md`
+- `prompts/phase-lab-showcase.md` — lab portfolio (T20–T24)
+- `prompts/phase-migrate-kiwash.md` — **cancelled** stub only
 
 ## Steps
 
-Each prompt must include: goal, read-first list (spec paths), invariants, file layout, acceptance checks, out of scope.
+Each active prompt must include: goal, read-first list, invariants, acceptance, out of scope.
 
 ## Done when
 
-Copy-pasting any prompt into a new chat is sufficient to start that phase.
+Copy-pasting any **active** prompt into a new chat is sufficient to start that phase.
 
 ## Do not
 
-Reference chat history or "as discussed".
+Reference chat history. Do not treat kiwash migration as active work.

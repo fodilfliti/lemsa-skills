@@ -13,8 +13,46 @@ Page controller mixins, shells, loading, and the page generator. **Core barrel i
 - `Notices` interface — toast/snackbar API (`info` / `warn` / `error` / `success` / `showFailure`); **no Material impl here** (that ships in `flutter_app_kit`)
 - `PageAction` + `ActionSlot` — actions as data, shell decides placement
 - Shells: `FormPage`, `FormSheet`, `FormDialog`, `FormPanel`
+- `FormBackground` — color / colorDark underlay + image / imageDark for `FormPage`
 - `PageHarness` — test mount without `ProviderScope`
 - `dart run flutter_page_kit:gen page <feature>/<name>`
+
+### FormPage chrome
+
+- `showAppBar` (default `true`) — when `false`, `Scaffold.appBar` is null; optional `header` sits above the body (caller builds back + title + Spacer + Save).
+- `FormBackStyle` (`platform` | `android` | `ios`) — AppBar leading when `showAppBar` is true. Leading only when the route can pop or `onBack` is set. `platform` uses Flutter’s adaptive `BackButton`; `android` / `ios` use `Icons.arrow_back` / `Icons.arrow_back_ios`.
+- `onBack` — optional; otherwise `Navigator.maybePop`.
+- When `showAppBar: false`, **`ActionSlot.appBar` is ignored** (debug assert). Put Save in `header` or use `ActionSlot.bottomBar` / `inline`. `title` is ignored when the AppBar is off.
+- `FormBackground` — optional underlay + light/dark images. Paint order: `Scaffold.backgroundColor` (underlay through PNG holes) → optional `Image` → form content. Null `color` / `colorDark` → `Theme.scaffoldBackgroundColor` (theme kits already map tokens there; **no** page_kit → theme_kit dependency). Color-only, image-only, or both are valid. Omit `background` for today’s theme-only look.
+
+```dart
+FormPage(
+  showAppBar: false,
+  title: '',
+  header: Row(
+    children: [
+      IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: () => Navigator.maybePop(context)),
+      Text('Edit task'),
+      const Spacer(),
+      TextButton(onPressed: controller.submit, child: Text('Save')),
+    ],
+  ),
+  background: FormBackground(
+    color: const Color(0xFFF5F0E8),
+    colorDark: const Color(0xFF1A1510),
+    image: AssetImage('assets/auth_shape_light.png'),
+    imageDark: AssetImage('assets/auth_shape_dark.png'),
+  ),
+  child: ...,
+)
+
+FormPage(
+  title: 'Edit task',
+  leadingStyle: FormBackStyle.ios,
+  actions: [PageAction(id: 'save', label: 'Save', slot: ActionSlot.appBar, onPressed: ...)],
+  child: ...,
+)
+```
 
 ### Riverpod bridge (same package, second barrel)
 
@@ -65,5 +103,6 @@ For `gen page debt/add --form --steps 3 --edit DebtModel`:
 
 - `PageHarness` mounts and disposes without leak (add/remove listener count).
 - `busy.of('save')` independent of `busy.of(('delete', id))`.
+- `FormPage`: AppBar present/absent, `header` when AppBar off, `FormBackStyle.ios` / `.android` leading when route can pop; `FormBackground` underlay color + light/dark image selection.
 - Grep/test: no riverpod import outside `lib/src/riverpod/`.
 - Riverpod example or test: `AsyncView` renders error branch when `AsyncValue` has error.

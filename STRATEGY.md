@@ -1,11 +1,12 @@
 # Strategy
 
-Design intent and architecture live in **`spec/`**, not here.
+Design intent and architecture live in **`spec/`** (agents). Long-form human explanation lives in **`docs/`**.
 
-- Start: [spec/README.md](spec/README.md)
+- **Humans / why:** [docs/README.md](docs/README.md) — package guides, family map, approach
+- Agent brain: [spec/README.md](spec/README.md)
 - Cross-kit architecture: [spec/architecture.md](spec/architecture.md)
 - Project contract: [spec/lemsa-yaml.md](spec/lemsa-yaml.md)
-- Per-kit designs: [spec/kits/README.md](spec/kits/README.md)
+- Per-kit designs (short): [spec/kits/README.md](spec/kits/README.md)
 - Tasks for agents: [spec/tasks/README.md](spec/tasks/README.md)
 - Phase kickoff prompts: [prompts/README.md](prompts/README.md)
 
