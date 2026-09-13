@@ -1,6 +1,8 @@
-# flutter_nav_kit
+# lemsa_nav_kit (repo: flutter_nav_kit)
 
 **Job:** **routing** — `PageNavigator` over auto_route, auth/guest guards, deep links, typed args.
+
+**Pub name:** `lemsa_nav_kit` (GitHub repo remains `flutter_nav_kit`; `flutter_nav_kit` was blocked on pub.dev as too similar to `flutter_navkit`).
 
 **Not its job:** form fields, themes, repository logic.
 

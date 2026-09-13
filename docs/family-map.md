@@ -58,7 +58,7 @@ Solid arrows = package depends on. Dashed = optional barrel / peer.
 | `flutter_input_kit` | Semantic fields + validators | Navigation, repositories |
 | `flutter_data_kit` | Data contracts, paging, cache policy | Vendor SDKs |
 | `flutter_data_kit_*` | One backend’s mapper + sources | UI, other backends |
-| `flutter_nav_kit` | Routes, guards, `PageNavigator` impl | Form fields, themes |
+| `lemsa_nav_kit` | Routes, guards, `PageNavigator` impl | Form fields, themes |
 | `flutter_app_kit` | Boot, env, secure storage, Material notices | Feature pages |
 | `lab/` | Portfolio demo of the whole stack | Published package |
 
