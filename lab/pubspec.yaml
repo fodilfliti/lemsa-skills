@@ -42,7 +42,7 @@ dependencies:
     path: ../../flutter_data_kit/packages/flutter_data_kit_supabase
   flutter_data_kit_firebase:
     path: ../../flutter_data_kit/packages/flutter_data_kit_firebase
-  flutter_nav_kit:
+  lemsa_nav_kit:
     path: ../../flutter_nav_kit
   flutter_app_kit:
     path: ../../flutter_app_kit
