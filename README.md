@@ -101,7 +101,7 @@ Other kit consumer skills (page, input, data, …) ship in their own GitHub repo
 | [flutter_page_kit](https://github.com/fodilfliti/flutter_page_kit) | Page controllers, shells, actions, loading | Local |
 | [flutter_input_kit](https://github.com/fodilfliti/flutter_input_kit) | Semantic form fields and validators | Local |
 | [flutter_data_kit](https://github.com/fodilfliti/flutter_data_kit) | Backend adapters, pagination, failure mapping | Local |
-| [flutter_nav_kit](https://github.com/fodilfliti/flutter_nav_kit) | auto_route conventions and guards | Local |
+| [lemsa_nav_kit](https://github.com/fodilfliti/lemsa_nav_kit) | auto_route conventions and guards | Published |
 | [flutter_app_kit](https://github.com/fodilfliti/flutter_app_kit) | Bootstrap, env and flavors, secure storage | Local |
 
 ## License
