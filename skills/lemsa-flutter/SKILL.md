@@ -25,6 +25,7 @@ Read sibling files only when needed:
 Also load when the task touches them (install separately if missing):
 
 - `flutter-scale-kit` / `flutter-scale-theme-kit` — if pubspec lists them
+- `flutter-chat-kit` — any chat, inbox or messaging screen
 - `flutter-riverpod3` — any provider or state question
 - `flutter-autoroute` — navigation
 - `flutter-slang` — translations

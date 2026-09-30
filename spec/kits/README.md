@@ -12,6 +12,7 @@ Read the kit you're building; read [../package.md](../package.md) for the family
 | `flutter_data_kit` | [flutter_data_kit.md](flutter_data_kit.md) | Phase 4 |
 | `flutter_nav_kit` | [flutter_nav_kit.md](flutter_nav_kit.md) | Phase 5 |
 | `flutter_app_kit` | [flutter_app_kit.md](flutter_app_kit.md) | Phase 5 |
+| `flutter_chat_kit` | [flutter_chat_kit.md](flutter_chat_kit.md) | Phase 6 (tasks in its own repo) |
 
 Published siblings (design lives in their own repos):
 

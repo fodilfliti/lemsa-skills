@@ -2,7 +2,9 @@
 
 Repo: https://github.com/fodilfliti/skills
 
-Agent Skills and design specs for the lemsa_packages Flutter family (flutter_scale_kit, flutter_scale_theme_kit, lemsa_core_kit, flutter_page_kit, flutter_input_kit, flutter_data_kit, flutter_nav_kit, flutter_app_kit). Documentation only, no Dart code.
+Agent Skills and design specs for the lemsa_packages Flutter family (flutter_scale_kit, flutter_scale_theme_kit, lemsa_core_kit, flutter_page_kit, flutter_input_kit, flutter_data_kit, flutter_nav_kit, flutter_app_kit, flutter_chat_kit). Documentation only, no Dart code.
+
+Bundled kit skills: skills/flutter-scale-kit, skills/flutter-scale-theme-kit, skills/flutter-chat-kit (chat room + inbox on any backend; ChatSource, ChatStyle, ChatScale).
 
 ## Agent skills (install in the consumer app)
 

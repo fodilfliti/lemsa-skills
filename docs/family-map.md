@@ -18,8 +18,10 @@ graph TD
   drift[flutter_data_kit_drift]
   nav[flutter_nav_kit]
   app[flutter_app_kit]
+  chat[flutter_chat_kit]
   lab[lab showcase]
 
+  core --> chat
   core --> page
   core --> data
   core --> nav
@@ -60,6 +62,7 @@ Solid arrows = package depends on. Dashed = optional barrel / peer.
 | `flutter_data_kit_*` | One backend’s mapper + sources | UI, other backends |
 | `lemsa_nav_kit` | Routes, guards, `PageNavigator` impl | Form fields, themes |
 | `flutter_app_kit` | Boot, env, secure storage, Material notices | Feature pages |
+| `flutter_chat_kit` | Chat models, SQLite cache, outbox, chat room + inbox UI | Backend SDKs, Riverpod, translations |
 | `lab/` | Portfolio demo of the whole stack | Published package |
 
 ## Hard dependency rules
@@ -71,6 +74,7 @@ These keep the graph honest (full list in [invariants.md](../spec/invariants.md)
 3. **`flutter_data_kit`** never depends on a specific backend — adapters do.
 4. **Scale and theme** do not import each other or any other Lemsa kit.
 5. **No kit** imports another kit’s `example/`.
+6. **`flutter_chat_kit`** never depends on a backend SDK or Riverpod; apps implement its `ChatSource`.
 
 ## How an app picks packages
 
@@ -84,6 +88,7 @@ These keep the graph honest (full list in [invariants.md](../spec/invariants.md)
 | Local SQL | + `flutter_data_kit`, `flutter_data_kit_drift` |
 | Typed routes | + `flutter_nav_kit` |
 | Production boot | + `flutter_app_kit` |
+| Chat (any backend) | + `flutter_chat_kit` (implement `ChatSource` in the app) |
 
 Typical full app: scale + theme + core + page + input + data + one adapter + nav + app.
 
@@ -91,7 +96,7 @@ Typical full app: scale + theme + core + page + input + data + one adapter + nav
 
 | Layout | Packages |
 | --- | --- |
-| One repo = one pub package | scale, theme, core, page, input, nav, app |
+| One repo = one pub package | scale, theme, core, page, input, nav, app, chat |
 | One repo = pub **workspace** | `flutter_data_kit` + `packages/flutter_data_kit_*` |
 | Docs / skills / lab | `lemsa-skills` (this folder’s parent) |
 

@@ -6,7 +6,7 @@ Each folder is one Agent Skill (`SKILL.md` + optional reference files).
 
 ## Install all (recommended)
 
-Includes stack skills **and** bundled `flutter-scale-kit` + `flutter-scale-theme-kit`:
+Includes stack skills **and** bundled `flutter-scale-kit`, `flutter-scale-theme-kit` and `flutter-chat-kit`:
 
 ```bash
 npx skills add fodilfliti/lemsa-skills
@@ -18,15 +18,17 @@ npx skills add fodilfliti/lemsa-skills
 npx skills add fodilfliti/lemsa-skills --skill lemsa-flutter
 npx skills add fodilfliti/lemsa-skills --skill flutter-scale-kit
 npx skills add fodilfliti/lemsa-skills --skill flutter-scale-theme-kit
+npx skills add fodilfliti/lemsa-skills --skill flutter-chat-kit
 ```
 
-## Scale / theme from their GitHub repos
+## Scale / theme / chat from their GitHub repos
 
 Canonical sources (re-copy into this repo when they change — see each `SOURCE.md`):
 
 ```bash
 npx skills add fodilfliti/flutter_scale_kit --skill flutter-scale-kit
 npx skills add fodilfliti/flutter_scale_theme_kit --skill flutter-scale-theme-kit
+npx skills add fodilfliti/flutter_chat_kit --skill flutter-chat-kit
 ```
 
 | Skill | Load when |
@@ -34,6 +36,7 @@ npx skills add fodilfliti/flutter_scale_theme_kit --skill flutter-scale-theme-ki
 | [lemsa-flutter](lemsa-flutter/) | Any Lemsa app work — **start here** |
 | [flutter-scale-kit](flutter-scale-kit/) | Responsive size (`ScaleKitBuilder`, `.w` / `.sp`) — **bundled** |
 | [flutter-scale-theme-kit](flutter-scale-theme-kit/) | Look / tokens (`STTheme`, `context.st`) — **bundled** |
+| [flutter-chat-kit](flutter-chat-kit/) | Chat room + inbox on any backend (`ChatSource`, `ChatStyle`) — **bundled** |
 | [lemsa-lab](lemsa-lab/) | Work in skills repo `lab/` sandbox |
 | [lemsa-pub-deps](lemsa-pub-deps/) | Add/upgrade dependencies, version checks |
 | [lemsa-package-author](lemsa-package-author/) | Creating a new kit repo |
