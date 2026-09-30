@@ -15,6 +15,8 @@ Reference apps shipped `CustomTextField` with ~40 optional params and fifteen `*
 | `FieldSpec` | Binds label, keyboard, obscure, validator to a `Validatable` / controller |
 | Semantic fields | `EmailField`, `PasswordField`, `PhoneField`, `MoneyField`, `DateField`, `CountryField`, `SearchField`, `AddressField`, … |
 | `ListField<T>` | Dynamic rows (phones, names) without copy-paste add/remove UI |
+| `Countries` / `Country` | ~250 countries: ISO code, dial code, English name, flag emoji (no assets); lookup + search |
+| `showCountryPicker` / `CountryPickerList` | Searchable picker with pinned favorites; localized names via `nameOf` (app translations) |
 | `Validators` | Pure functions → **error codes** (`required`, `email`, `minLength`, …) |
 | `FieldStyle` | Visual variants (e.g. corner label) as enum — not parallel widget trees |
 | Optional gen | Schema/gen from controller declarations |
@@ -48,6 +50,7 @@ Depends on scale + theme so fields share spacing and look with the rest of the a
 | Error codes, not strings | i18n stays at the edge; validators stay pure |
 | One FieldStyle enum | Avoids duplicate trees for “corner label” vs default |
 | ListField | Kills add_phones_widget-style duplication |
+| Country data in the kit | Apps stop copying 250-line country lists; names stay localizable via `nameOf` |
 
 ## Depends on
 

@@ -47,10 +47,35 @@ Adapters **must** map vendor errors → `AppFailure`. Vendor types stop at the a
 
 | Package | Mapper | Implements |
 | --- | --- | --- |
-| `flutter_data_kit_dio` | Dio interceptor / failure map | REST (often Retrofit) |
-| `flutter_data_kit_supabase` | `mapSupabase()` | Auth, tables, RPC, storage, realtime |
-| `flutter_data_kit_firebase` | Firebase → `AppFailure` | Auth, Firestore, Storage, FCM |
+| `flutter_data_kit_dio` | Dio interceptor / failure map | REST (often Retrofit); bearer token hook; 401 refresh + replay (`AuthRetryInterceptor`) |
+| `flutter_data_kit_supabase` | `mapSupabase()` | Auth helpers (session stream, access-token reader, sign-in/out), tables, RPC, storage, realtime |
+| `flutter_data_kit_firebase` | Firebase → `AppFailure` | Auth helpers (session stream, ID-token reader, sign-in/out), Firestore, Storage, FCM |
 | `flutter_data_kit_drift` | SQLite → `AppFailure` | Local tables, migrations, reactive queries |
+
+## Mixed backends: auth from one provider, data from REST
+
+Common setup: Firebase **or** Supabase handles sign-in, your own REST API
+serves the data. The Dio adapter never imports an auth SDK — it takes a
+`TokenReader` callback, and each auth adapter ships a matching reader:
+
+```dart
+final auth = FirebaseAuth.instance;           // or Supabase.instance.client.auth
+final api = buildDioClient(
+  baseUrl: env.apiBaseUrl,
+  readToken: firebaseIdTokenReader(auth),      // supabaseAccessTokenReader(auth)
+  refreshToken: firebaseIdTokenReader(auth, forceRefresh: true),
+  onUnauthorized: () => unawaited(signOutFirebase(auth)),
+);
+```
+
+On a 401 the client force-refreshes once (shared by concurrent requests),
+replays the request, and only then gives up with
+`AuthFailure(AuthReason.expired)` + `onUnauthorized`. The session stream
+(`watchFirebaseSession` / `watchSupabaseSession`) feeds nav_kit's
+`AuthSession`, so `AuthGuard` redirects without screen code.
+
+Why not a hand-written token cache (reference apps)? Both SDKs already cache
+and refresh tokens; custom timers leaked and hid errors.
 
 App `pubspec` example:
 

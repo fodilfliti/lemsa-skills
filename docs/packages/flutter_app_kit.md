@@ -27,6 +27,9 @@ This kit turns boot into a **phased, testable** API and owns the Material implem
 | `deleteUserData()` | Secure clear + hook for Drift wipe on sign-out |
 | `MaterialNotices` | Implements page_kit `Notices` via `ScaffoldMessenger` |
 | Error zone | `FlutterError` / `PlatformDispatcher` → `AppReporter` |
+| Dialogs / sheets | `showAppDialog` (width capped on tablet/web), `showAppFullScreenDialog`, `showAppBottomSheet`, `showConfirmDialog` → `bool` |
+| `requireSignIn` | "Log in to continue" gate for actions; continues after sign-in |
+| `AppDialogs(navigatorKey:)` | Same helpers for controllers, bound to the root navigator key — no global `BuildContext` |
 
 Shape:
 
@@ -66,6 +69,7 @@ App root typically:
 | `deleteUserData` on sign-out | Three layers cleaned (see riverpod.md) |
 | Notices impl here | Controllers depend on interface; Material stays at edge (D16) |
 | Riverpod overrides in boot | No get_it for “just main” (D4) |
+| Dialog helpers hold a navigator key | Reference apps kept a global context + fixed pixel sizes; this caps size responsively and ships no strings |
 
 ## Depends on
 

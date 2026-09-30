@@ -25,6 +25,7 @@ Reference apps each reinvented:
 | `Change<T>` (`Created` / `Updated` / `Deleted`) | List upsert vocabulary |
 | `AppReporter` / `NoOpReporter` | Crash/analytics hook without a vendor |
 | `AppLogger` | Thin `dart:developer` wrapper |
+| `Debouncer` / `Throttler` | Last-call-wins (search, autosave) / first-call-wins (double taps); superseded debounced calls resolve `null` instead of hanging |
 | Extensions | string / bool / date / num / list — replace per-app helpers |
 
 ## Architecture
@@ -34,7 +35,7 @@ lib/lemsa_core_kit.dart          ← single public barrel
 lib/src/
   failure/   result/   disposables/
   change/    reporter/ logging/
-  extensions/
+  timing/    extensions/
 ```
 
 Layer rules for consumers:
