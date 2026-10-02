@@ -1,8 +1,8 @@
-# flutter_chat_kit
+# flutter_chat_pro
 
 Backend-agnostic chat. Replaces the hand-built chats in valizex (Firestore, sqflite, `Map` messages) and lightnessword (Supabase, ReaxDB blob cache).
 
-The detailed design and build order live in the kit's own repo: `flutter_chat_kit/spec/` (package, invariants, decisions D1–D9) and `flutter_chat_kit/spec/tasks/` (T01–T17).
+The detailed design and build order live in the kit's own repo ([fodilfliti/flutter_chat_kit](https://github.com/fodilfliti/flutter_chat_kit)): `spec/` (package, invariants, decisions D1–D9) and `spec/tasks/` (T01–T17).
 
 ## Owns
 
@@ -12,7 +12,7 @@ The detailed design and build order live in the kit's own repo: `flutter_chat_ki
 - `ChatKit` root; `InboxController`, `ChatRoomController`, `ComposerController` (plain `ChangeNotifier`)
 - `ChatRoomView`, `InboxView`, and every sub-widget, replaceable through `ChatBuilders` / `InboxBuilders`
 - `ChatStyle` (presets, options, `customize`) building `ChatTheme`; `ChatScale` takes the app's scale factor (`1.w`, `1.sp`) without importing a scale package
-- Consumer skill `skills/flutter-chat-kit`, bundled in this repo
+- Consumer skill `skills/flutter-chat-pro`, bundled in this repo
 
 ## Depends on
 

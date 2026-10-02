@@ -32,7 +32,7 @@ Sibling folders under `C:\Users\lemsa\Documents\apps\lemsa_packages\`, one git r
 - `flutter_scale_kit` — size. Published.
 - `flutter_scale_theme_kit` — look. Published.
 - `lemsa_core_kit`, `flutter_page_kit`, `flutter_input_kit`, `flutter_data_kit`, `flutter_nav_kit`, `flutter_app_kit` — planned. See `spec/kits/`.
-- `flutter_chat_kit` — chat on any backend. Local; its consumer skill is bundled in `skills/flutter-chat-kit` (re-copy from the kit repo when it changes).
+- `flutter_chat_pro` — chat on any backend. Published (repo `fodilfliti/flutter_chat_kit`); its consumer skill is bundled in `skills/flutter-chat-pro` (re-copy from the kit repo when it changes).
 
 Each kit repo keeps its own `spec/` for internals and its own `skills/<kit-name>/` for consumer usage. **This** repo holds only cross-kit design and the stack skills that belong to no single kit.
 

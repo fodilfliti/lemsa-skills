@@ -10,7 +10,7 @@
 | PagedList, Dio/Supabase adapters | `flutter_data_kit` + `_dio` / `_supabase` |
 | PageNavigator, AuthGuard | `flutter_nav_kit` |
 | bootstrap, secure storage, flavors | `flutter_app_kit` |
-| Chat room, inbox, messages (any backend) | `flutter_chat_kit` + `flutter-chat-kit` skill |
+| Chat room, inbox, messages (any backend) | `flutter_chat_pro` + `flutter-chat-pro` skill |
 | @riverpod rules | `flutter-riverpod3` skill |
 | Routes, deep links | `flutter-autoroute` skill |
 | Translations | `flutter-slang` skill |

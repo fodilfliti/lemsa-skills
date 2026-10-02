@@ -6,7 +6,7 @@ Each folder is one Agent Skill (`SKILL.md` + optional reference files).
 
 ## Install all (recommended)
 
-Includes stack skills **and** bundled `flutter-scale-kit`, `flutter-scale-theme-kit` and `flutter-chat-kit`:
+Includes stack skills **and** bundled `flutter-scale-kit`, `flutter-scale-theme-kit` and `flutter-chat-pro`:
 
 ```bash
 npx skills add fodilfliti/lemsa-skills
@@ -18,7 +18,7 @@ npx skills add fodilfliti/lemsa-skills
 npx skills add fodilfliti/lemsa-skills --skill lemsa-flutter
 npx skills add fodilfliti/lemsa-skills --skill flutter-scale-kit
 npx skills add fodilfliti/lemsa-skills --skill flutter-scale-theme-kit
-npx skills add fodilfliti/lemsa-skills --skill flutter-chat-kit
+npx skills add fodilfliti/lemsa-skills --skill flutter-chat-pro
 ```
 
 ## Scale / theme / chat from their GitHub repos
@@ -28,7 +28,7 @@ Canonical sources (re-copy into this repo when they change — see each `SOURCE.
 ```bash
 npx skills add fodilfliti/flutter_scale_kit --skill flutter-scale-kit
 npx skills add fodilfliti/flutter_scale_theme_kit --skill flutter-scale-theme-kit
-npx skills add fodilfliti/flutter_chat_kit --skill flutter-chat-kit
+npx skills add fodilfliti/flutter_chat_kit --skill flutter-chat-pro
 ```
 
 | Skill | Load when |
@@ -36,7 +36,7 @@ npx skills add fodilfliti/flutter_chat_kit --skill flutter-chat-kit
 | [lemsa-flutter](lemsa-flutter/) | Any Lemsa app work — **start here** |
 | [flutter-scale-kit](flutter-scale-kit/) | Responsive size (`ScaleKitBuilder`, `.w` / `.sp`) — **bundled** |
 | [flutter-scale-theme-kit](flutter-scale-theme-kit/) | Look / tokens (`STTheme`, `context.st`) — **bundled** |
-| [flutter-chat-kit](flutter-chat-kit/) | Chat room + inbox on any backend (`ChatSource`, `ChatStyle`) — **bundled** |
+| [flutter-chat-pro](flutter-chat-pro/) | Chat room + inbox on any backend (`ChatSource`, `ChatStyle`) — **bundled** |
 | [lemsa-lab](lemsa-lab/) | Work in skills repo `lab/` sandbox |
 | [lemsa-pub-deps](lemsa-pub-deps/) | Add/upgrade dependencies, version checks |
 | [lemsa-package-author](lemsa-package-author/) | Creating a new kit repo |

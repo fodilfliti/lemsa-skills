@@ -44,7 +44,7 @@ One git repo per package, all siblings under `C:\Users\lemsa\Documents\apps\lems
 | `flutter_data_kit_drift`       | Drift-backed local source                                          | data_kit, drift            | In progress / local |
 | `flutter_nav_kit`              | `PageNavigator` over auto_route, Riverpod guards, deep-link table  | core, page, auto_route     | In progress / local |
 | `flutter_app_kit`              | Bootstrap phases, typed env/flavors, secure storage, error zone    | core, page_kit             | In progress / local |
-| `flutter_chat_kit`             | Backend-agnostic chat: models, Drift cache, outbox, chat room + inbox UI | core, drift, media plugins | 0.1.0 ready (T01–T17 done; publish pending owner) |
+| `flutter_chat_pro`             | Backend-agnostic chat: models, Drift cache, outbox, chat room + inbox UI | core, drift, media plugins | 0.1.0 published (T01–T17 done) |
 | `lemsa_lab` (this repo `lab/`) | Portfolio showcase — all kits, multi-model, swappable backends | family kits via path | Showcase (T20–T24) |
 
 ```mermaid
@@ -57,7 +57,7 @@ graph TD
   data[flutter_data_kit]
   nav[flutter_nav_kit]
   app[flutter_app_kit]
-  chat[flutter_chat_kit]
+  chat[flutter_chat_pro]
 
   core --> page
   core --> input
@@ -81,7 +81,7 @@ These are the load-bearing ones. Full list in [invariants.md](invariants.md).
 - `flutter_data_kit` must not depend on any specific backend. Backends are adapter packages.
 - Neither scale kit imports the other, and neither imports anything else in the family.
 - No kit imports another kit's `example/`.
-- `flutter_chat_kit` must not depend on any backend SDK or Riverpod. Apps implement its `ChatSource`; its only Lemsa dependency is `lemsa_core_kit`.
+- `flutter_chat_pro` must not depend on any backend SDK or Riverpod. Apps implement its `ChatSource`; its only Lemsa dependency is `lemsa_core_kit`.
 
 ## Adapter packages and pub workspaces
 

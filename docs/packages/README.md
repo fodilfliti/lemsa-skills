@@ -12,7 +12,7 @@ One file per kit. Each covers **what it does**, **architecture**, **why**, and *
 | `flutter_data_kit` (+ adapters) | [flutter_data_kit.md](flutter_data_kit.md) |
 | `flutter_nav_kit` | [flutter_nav_kit.md](flutter_nav_kit.md) |
 | `flutter_app_kit` | [flutter_app_kit.md](flutter_app_kit.md) |
-| `flutter_chat_kit` | [flutter_chat_kit.md](flutter_chat_kit.md) |
+| `flutter_chat_pro` | [flutter_chat_pro.md](flutter_chat_pro.md) |
 | `lab` showcase | [lab.md](lab.md) |
 
 Start with [../why-this-approach.md](../why-this-approach.md) and [../family-map.md](../family-map.md) if you are new to the family.

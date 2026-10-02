@@ -4,10 +4,10 @@ This skill folder is **copied** into `lemsa-skills` so `npx skills add fodilflit
 
 Canonical / publish source (edit there, then re-copy here when the skill changes):
 
-- https://github.com/fodilfliti/flutter_chat_kit/tree/main/skills/flutter-chat-kit
+- https://github.com/fodilfliti/flutter_chat_kit/tree/main/skills/flutter-chat-pro
 
 Or install directly from that repo:
 
 ```bash
-npx skills add fodilfliti/flutter_chat_kit --skill flutter-chat-kit
+npx skills add fodilfliti/flutter_chat_kit --skill flutter-chat-pro
 ```

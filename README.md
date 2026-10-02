@@ -12,7 +12,7 @@ Works with any agent that follows the [Agent Skills spec](https://agentskills.io
 
 ### Recommended — one install (includes scale + theme + chat)
 
-Scale, theme and chat consumer skills are **bundled** in this repo under `skills/flutter-scale-kit`, `skills/flutter-scale-theme-kit` and `skills/flutter-chat-kit` (canonical copies still live in their kit repos).
+Scale, theme and chat consumer skills are **bundled** in this repo under `skills/flutter-scale-kit`, `skills/flutter-scale-theme-kit` and `skills/flutter-chat-pro` (canonical copies still live in their kit repos).
 
 ```bash
 npx skills add fodilfliti/lemsa-skills
@@ -26,7 +26,7 @@ One skill only:
 npx skills add fodilfliti/lemsa-skills --skill lemsa-flutter
 npx skills add fodilfliti/lemsa-skills --skill flutter-scale-kit
 npx skills add fodilfliti/lemsa-skills --skill flutter-scale-theme-kit
-npx skills add fodilfliti/lemsa-skills --skill flutter-chat-kit
+npx skills add fodilfliti/lemsa-skills --skill flutter-chat-pro
 ```
 
 ### Also install from the published kit repos (optional / keep in sync)
@@ -36,7 +36,7 @@ If you only need size/look, or want the skill straight from the package repo:
 ```bash
 npx skills add fodilfliti/flutter_scale_kit --skill flutter-scale-kit
 npx skills add fodilfliti/flutter_scale_theme_kit --skill flutter-scale-theme-kit
-npx skills add fodilfliti/flutter_chat_kit --skill flutter-chat-kit
+npx skills add fodilfliti/flutter_chat_kit --skill flutter-chat-pro
 ```
 
 | Skill | GitHub |
@@ -44,7 +44,7 @@ npx skills add fodilfliti/flutter_chat_kit --skill flutter-chat-kit
 | Family + stack + lab + **bundled** scale/theme/chat | [fodilfliti/lemsa-skills](https://github.com/fodilfliti/lemsa-skills) |
 | `flutter-scale-kit` (canonical) | [fodilfliti/flutter_scale_kit](https://github.com/fodilfliti/flutter_scale_kit) → `skills/flutter-scale-kit` |
 | `flutter-scale-theme-kit` (canonical) | [fodilfliti/flutter_scale_theme_kit](https://github.com/fodilfliti/flutter_scale_theme_kit) → `skills/flutter-scale-theme-kit` |
-| `flutter-chat-kit` (canonical) | [fodilfliti/flutter_chat_kit](https://github.com/fodilfliti/flutter_chat_kit) → `skills/flutter-chat-kit` |
+| `flutter-chat-pro` (canonical) | [fodilfliti/flutter_chat_kit](https://github.com/fodilfliti/flutter_chat_kit) → `skills/flutter-chat-pro` |
 
 ### Manual clone (no npx)
 
@@ -78,7 +78,7 @@ Agent rules stay in [`spec/`](spec/README.md).
 | `skills/lemsa-flutter/` | Master skill. The architecture, the `lemsa.yaml` contract, and routing to the right kit |
 | `skills/flutter-scale-kit/` | **Bundled** from [flutter_scale_kit](https://github.com/fodilfliti/flutter_scale_kit) — responsive size |
 | `skills/flutter-scale-theme-kit/` | **Bundled** from [flutter_scale_theme_kit](https://github.com/fodilfliti/flutter_scale_theme_kit) — look / tokens |
-| `skills/flutter-chat-kit/` | **Bundled** from [flutter_chat_kit](https://github.com/fodilfliti/flutter_chat_kit) — chat room + inbox on any backend |
+| `skills/flutter-chat-pro/` | **Bundled** from [flutter_chat_pro](https://github.com/fodilfliti/flutter_chat_kit) — chat room + inbox on any backend |
 | `skills/lemsa-lab/` | Work in the skills repo `lab/` sandbox |
 | `skills/lemsa-pub-deps/` | Dependency versions and compatibility gate |
 | `skills/lemsa-package-author/` | Scaffolds a new `flutter_*_kit` repo in the house style |
@@ -107,7 +107,7 @@ Other kit consumer skills (page, input, data, …) ship in their own GitHub repo
 | [flutter_data_kit](https://github.com/fodilfliti/flutter_data_kit) | Backend adapters, pagination, failure mapping | Local |
 | [lemsa_nav_kit](https://github.com/fodilfliti/lemsa_nav_kit) | auto_route conventions and guards | Published |
 | [flutter_app_kit](https://github.com/fodilfliti/flutter_app_kit) | Bootstrap, env and flavors, secure storage | Local |
-| [flutter_chat_kit](https://github.com/fodilfliti/flutter_chat_kit) | Chat room + inbox on any backend, SQLite cache, offline outbox | Local |
+| [flutter_chat_pro](https://pub.dev/packages/flutter_chat_pro) | Chat room + inbox on any backend, SQLite cache, offline outbox | Published |
 
 ## License
 

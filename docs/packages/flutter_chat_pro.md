@@ -1,10 +1,10 @@
-# flutter_chat_kit
+# flutter_chat_pro
 
 **Job:** a complete chat (inbox + chat room) on **any backend**, with an offline SQLite cache, a persistent send queue, media stored on disk, and easy styling.
 
 **Not its job:** talking to a specific backend (the app implements `ChatSource`), state management (plain `ChangeNotifier` controllers; apps may wrap them in Riverpod), translations (the app fills `ChatStrings`), or screen scaling math (the app passes its factor through `ChatScale`).
 
-Status: **local**, 0.1.0 ready; publish pending owner. Repo: [fodilfliti/flutter_chat_kit](https://github.com/fodilfliti/flutter_chat_kit).
+Status: **published** on pub.dev ([flutter_chat_pro](https://pub.dev/packages/flutter_chat_pro)). Repo: [fodilfliti/flutter_chat_kit](https://github.com/fodilfliti/flutter_chat_kit).
 
 ## Why it exists
 
@@ -55,6 +55,6 @@ Backend SDKs, Riverpod, slang, scale / theme kits, other Lemsa UI kits.
 
 ## Related
 
-- Consumer skill: `skills/flutter-chat-kit` (bundled)
-- Short design: [../../spec/kits/flutter_chat_kit.md](../../spec/kits/flutter_chat_kit.md)
+- Consumer skill: `skills/flutter-chat-pro` (bundled)
+- Short design: [../../spec/kits/flutter_chat_pro.md](../../spec/kits/flutter_chat_pro.md)
 - Size: [flutter_scale_kit.md](flutter_scale_kit.md) · Look: [flutter_scale_theme_kit.md](flutter_scale_theme_kit.md)
