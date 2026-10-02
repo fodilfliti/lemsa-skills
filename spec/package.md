@@ -44,7 +44,7 @@ One git repo per package, all siblings under `C:\Users\lemsa\Documents\apps\lems
 | `flutter_data_kit_drift`       | Drift-backed local source                                          | data_kit, drift            | In progress / local |
 | `flutter_nav_kit`              | `PageNavigator` over auto_route, Riverpod guards, deep-link table  | core, page, auto_route     | In progress / local |
 | `flutter_app_kit`              | Bootstrap phases, typed env/flavors, secure storage, error zone    | core, page_kit             | In progress / local |
-| `flutter_chat_pro`             | Backend-agnostic chat: models, Drift cache, outbox, chat room + inbox UI | core, drift, media plugins | 0.1.0 published (T01–T17 done) |
+| `flutter_chat_pro`             | Backend-agnostic chat: models, Drift cache, outbox, chat room + inbox UI | core, drift, media plugins | 1.0.0 published (T01–T17 done) |
 | `lemsa_lab` (this repo `lab/`) | Portfolio showcase — all kits, multi-model, swappable backends | family kits via path | Showcase (T20–T24) |
 
 ```mermaid
